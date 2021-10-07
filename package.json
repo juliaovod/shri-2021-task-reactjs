@@ -1,0 +1,76 @@
+{
+  "name": "shri-2021-reactjs",
+  "version": "1.0.0",
+  "description": "Yandex SHRI React.js homework",
+  "private": true,
+  "main": "src/index.tsx",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --config webpack.dev.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliaovod/shri-2021-reactjs.git"
+  },
+  "author": "Julia Ovod (ovoddev@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juliaovod/shri-2021-reactjs/issues"
+  },
+  "homepage": "https://github.com/juliaovod/shri-2021-reactjs#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "autoprefixer": "^10.3.7",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.0",
+    "mini-css-extract-plugin": "^2.4.2",
+    "postcss-loader": "^6.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.3.0",
+    "stylelint": "^13.13.1",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3",
+    "webpack": "^5.58.0",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1",
+    "webpack-manifest-plugin": "^4.0.2",
+    "webpack-merge": "^5.8.0"
+  },
+  "lint-staged": {
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "browserslist": [
+    "last 2 version",
+    "not IE 11"
+  ],
+  "engines": {
+    "node": ">= 14.18.0"
+  },
+  "engineStrict": true
+}

@@ -1,0 +1,6 @@
+build/
+node_modules/
+
+.eslintrc.js
+.huskryrc.js
+*.config.js

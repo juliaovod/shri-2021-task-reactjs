@@ -10,7 +10,7 @@ const createApp = (): void => {
     <div>
       Hello! It&apos;s my feature CLI Server React app
 
-      <br/>
+      <br />
 
       <Button>Save</Button>
 

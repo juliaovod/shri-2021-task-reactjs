@@ -9,8 +9,8 @@
   outline: none;
   padding: 0;
   text-decoration: none;
-  transition-property: color, background-color, border-color;
   transition: 0.2s ease;
+  transition-property: color, background-color, border-color;
   user-select: none;
 
   &[disabled] {

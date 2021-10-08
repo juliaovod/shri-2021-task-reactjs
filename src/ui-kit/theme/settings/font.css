@@ -1,8 +1,7 @@
 @import 'https://yastatic.net/s3/frontend/yandex-font/v0.0.2/browser.css';
 
 :root {
-  --font: 'YS Text', Arial, sans-serif;
-
+  --font: 'YS Text', arial, sans-serif;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;

@@ -1,6 +1,7 @@
 .button {
   @mixin button;
 
+  border: 2px solid transparent;
   border-radius: var(--border-radius-control);
   color: var(--color-black);
   font-size: 13px;
@@ -8,7 +9,6 @@
   line-height: 36px;
   min-width: 80px;
   padding: 0 20px;
-  border: 2px solid transparent;
 }
 
 .button_theme_primary {

@@ -7,6 +7,9 @@
   --color-background-control-hovered: #dbdbdb;
   --color-border-control-focused: #b3b3b3;
 
+  --color-background-disabled: #f2f2f2;
+  --color-text-disabled: #7f7f7f;
+
   --color-blue-gray-50: #f0f2f3;
   --color-blue-gray-500: #7f8285;
   --color-blue-gray-600: #434445;

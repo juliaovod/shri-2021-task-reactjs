@@ -1,0 +1,43 @@
+.button {
+  @mixin button;
+
+  border-radius: var(--border-radius-control);
+  color: var(--color-black);
+  font-size: 13px;
+  height: 36px;
+  line-height: 36px;
+  min-width: 80px;
+  padding: 0 20px;
+  border: 2px solid transparent;
+}
+
+.button_theme_primary {
+  background-color: var(--color-background-action);
+
+  &:hover {
+    background-color: var(--color-background-action-hovered);
+  }
+
+  &:focus {
+    background-color: var(--color-background-action);
+    border-color: var(--color-border-action-focused);
+  }
+}
+
+.button_theme_secondary {
+  background-color: var(--color-background-control);
+
+  &:hover {
+    background-color: var(--color-background-control-hovered);
+  }
+
+  &:focus {
+    background-color: var(--color-background-control);
+    border-color: var(--color-border-control-focused);
+  }
+}
+
+.button_disabled {
+  background-color: var(--color-background-disabled);
+  color: var(--color-text-disabled);
+}

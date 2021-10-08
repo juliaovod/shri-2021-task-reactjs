@@ -10,8 +10,14 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "UiKit/*": ["src/ui/*"]
+      "UiKit/*": ["src/ui-kit/*"]
     },
+    "plugins": [
+      {
+        "classnameTransform": "camelCase",
+        "customMatcher": "\\.module\\.css$"
+      }
+    ],
     "jsx": "react"
   },
   "exclude": ["node_modules"]

@@ -1,0 +1,20 @@
+@define-mixin button {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+  transition-property: color, background-color, border-color;
+  transition: 0.2s ease;
+  user-select: none;
+
+  &[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

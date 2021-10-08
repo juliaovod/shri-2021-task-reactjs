@@ -2,6 +2,8 @@ const path = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -29,7 +31,7 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              transpileOnly: true,
+              transpileOnly: isDevelopment,
             },
           },
         ],
@@ -38,12 +40,14 @@ module.exports = {
         test: /\.css$/i,
         exclude: /node_modules/,
         use: [
-          process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              modules: true,
+              modules: {
+                localIdentName: isDevelopment ? '[name]__[local]___[hash:base64:10]' : '[hash:base64:10]',
+              },
               sourceMap: true,
             },
           },

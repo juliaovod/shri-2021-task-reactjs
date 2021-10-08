@@ -30,6 +30,8 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-use-before-define': ['error'],
     'comma-dangle': 'error',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': ['off'],
@@ -38,16 +40,14 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['accum', 'memo'] }],
     'no-unused-expressions': ['error'],
-    'no-unused-vars': ['error'],
+    'no-unused-vars': 'off',
+    'no-use-before-define': 'off',
+    'react/button-has-type': ['error', { button: true, reset: true, submit: true, }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-one-expression-per-line': ['error', { 'allow': 'single-child' }],
+    'react/require-default-props': 'off',
     'react/sort-comp': ['error'],
     'semi': 'error',
-    'sort-imports': ['error', {
-      'ignoreCase': false,
-      'ignoreDeclarationSort': false,
-      'ignoreMemberSort': false,
-      'memberSyntaxSortOrder': ['none', 'all', 'multiple', 'single'],
-      'allowSeparatedGroups': false
-    }],
+    'sort-keys': ['error'],
   },
 };

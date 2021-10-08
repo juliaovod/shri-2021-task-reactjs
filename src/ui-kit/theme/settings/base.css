@@ -1,0 +1,11 @@
+body {
+  color: var(--color-black);
+  font-family: var(--font);
+  font-weight: var(--font-weight-normal);
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}

@@ -1,0 +1,20 @@
+:root {
+  --color-background-action: #ffcc00;
+  --color-background-action-hovered: #f2c200;
+  --color-border-action-focused: #b38f00;
+
+  --color-background-control: #e6e6e6;
+  --color-background-control-hovered: #dbdbdb;
+  --color-border-control-focused: #b3b3b3;
+
+  --color-blue-gray-50: #f0f2f3;
+  --color-blue-gray-500: #7f8285;
+  --color-blue-gray-600: #434445;
+
+  --color-green-500: #00b341;
+  --color-orange-500: #ff9a00;
+  --color-red-500: #ff3333;
+
+  --color-black: #000;
+  --color-white: #fff;
+}

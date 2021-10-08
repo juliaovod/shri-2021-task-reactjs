@@ -13,7 +13,7 @@ module.exports = {
     modules: ['node_modules'],
     alias: {
       '@': path.resolve(__dirname, './src'),
-      'UiKit': path.resolve(__dirname, './src/ui'),
+      'UiKit': path.resolve(__dirname, './src/ui-kit'),
     },
   },
   module: {

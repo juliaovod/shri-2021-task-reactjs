@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent } from 'react';
+import React from 'react';
 
 import classNames from 'classnames';
 
@@ -7,12 +7,12 @@ import styles from './Button.module.css';
 type ButtonProps = {
   className?: string;
   isDisabled?: boolean;
-  onClick?: (e: SyntheticEvent) => void;
+  onClick?: (e: React.SyntheticEvent) => void;
   theme?: 'primary' | 'secondary';
   type?: 'submit' | 'button';
 }
 
-const Button: FC<ButtonProps> = (props) => {
+const Button: React.FC<ButtonProps> = (props) => {
   const {
     children,
     className,

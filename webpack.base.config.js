@@ -39,7 +39,6 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           process.env.NODE_ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'postcss-loader',
           {
             loader: 'css-loader',
             options: {
@@ -48,6 +47,7 @@ module.exports = {
               sourceMap: true,
             },
           },
+          'postcss-loader',
         ],
       },
     ],

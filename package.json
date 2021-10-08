@@ -6,6 +6,8 @@
   "main": "src/index.tsx",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config webpack.dev.config.js",
+    "lint:js": "eslint ./src --ext .ts,.tsx",
+    "lint:scss": "stylelint ./src/**/*.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,9 @@
     "url": "https://github.com/juliaovod/shri-2021-reactjs/issues"
   },
   "homepage": "https://github.com/juliaovod/shri-2021-reactjs#readme",
+  "dependencies": {
+    "@bem-react/classname": "^1.5.12"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
@@ -42,11 +47,16 @@
     "husky": "^7.0.2",
     "lint-staged": "^11.2.0",
     "mini-css-extract-plugin": "^2.4.2",
+    "normalize.css": "^8.0.1",
+    "postcss-autoreset": "^3.0.4",
     "postcss-loader": "^6.1.1",
+    "postcss-nested": "^5.0.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "style-loader": "^3.3.0",
     "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
     "webpack": "^5.58.0",

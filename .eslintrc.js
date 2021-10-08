@@ -37,10 +37,17 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['accum', 'memo'] }],
-    'no-unused-expressions': 'error',
+    'no-unused-expressions': ['error'],
     'no-unused-vars': ['error'],
     'react/jsx-one-expression-per-line': ['error', { 'allow': 'single-child' }],
     'react/sort-comp': ['error'],
     'semi': 'error',
+    'sort-imports': ['error', {
+      'ignoreCase': false,
+      'ignoreDeclarationSort': false,
+      'ignoreMemberSort': false,
+      'memberSyntaxSortOrder': ['none', 'all', 'multiple', 'single'],
+      'allowSeparatedGroups': false
+    }],
   },
 };

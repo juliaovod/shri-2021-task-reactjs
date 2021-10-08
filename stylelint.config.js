@@ -1,5 +1,8 @@
 module.exports = {
   extends: 'stylelint-config-standard',
+  plugins: [
+    'stylelint-order',
+  ],
   rules: {
     'max-nesting-depth': 4,
     'order/properties-alphabetical-order': true,
@@ -9,5 +12,6 @@ module.exports = {
         resolveNestedSelectors: true
       },
     ],
+    'string-quotes': 'single',
   },
 };

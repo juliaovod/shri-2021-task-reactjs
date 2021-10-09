@@ -1,0 +1,38 @@
+.footer {
+  background-color: var(--color-blue-gray-50);
+  padding: 12px 0;
+}
+
+.footer__container {
+  @mixin layout-container;
+
+  @mixin min-desktop-s {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.footer__nav {
+  margin-bottom: 8px;
+
+  @mixin min-desktop-s {
+    margin-bottom: 0;
+  }
+}
+
+.footer__link {
+  color: var(--color-blue-gray-500);
+  display: inline-flex;
+  font-size: var(--font-size-xs);
+  line-height: 18px;
+  text-decoration: none;
+  transition: color 0.2s ease-out;
+
+  & + & {
+    margin-left: 12px;
+  }
+
+  &:hover {
+    color: var(--color-red-600);
+  }
+}

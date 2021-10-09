@@ -7,6 +7,8 @@ import IconButton from 'UiKit/components/IconButton';
 import TextField from 'UiKit/components/TextField';
 import Typography from 'UiKit/components/Typography';
 
+import Footer from '@/components/Footer';
+
 import 'UiKit/theme/index.css';
 
 const createApp = (): void => {
@@ -74,6 +76,8 @@ const createApp = (): void => {
       <Icon name="icon-settings" />
       <Icon name="icon-stopwatch" />
       <Icon name="icon-user" />
+
+      <Footer />
     </div>,
     document.getElementById('root'),
   );

@@ -1,0 +1,10 @@
+@define-mixin layout-container {
+  max-width: 824px;
+  padding: 0 16px;
+  width: 100%;
+
+  @mixin min-desktop-s {
+    margin: 0 auto;
+    padding: 0;
+  }
+}

@@ -1,0 +1,5 @@
+@define-mixin min-desktop-s {
+  @media screen and (min-width: 1024px) {
+    @mixin-content;
+  }
+}

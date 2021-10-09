@@ -26,6 +26,10 @@
   background-image: url('~@/assets/images/icons/icon-calendar.svg');
 }
 
+.icon_name_icon-clear {
+  background-image: url('~@/assets/images/icons/icon-clear.svg');
+}
+
 .icon_name_icon-code-commit {
   background-image: url('~@/assets/images/icons/icon-code-commit.svg');
 }

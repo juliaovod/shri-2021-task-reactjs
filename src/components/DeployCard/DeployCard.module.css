@@ -7,6 +7,12 @@
 
   @mixin min-desktop-s {
     padding: 12px 24px;
+
+    &:hover {
+      box-shadow: 0 0 1px rgba(67, 68, 69, 0.3), 0 2px 8px rgba(67, 68, 69, 0.3);
+      cursor: pointer;
+      transition: box-shadow 0.2s ease-out;
+    }
   }
 }
 

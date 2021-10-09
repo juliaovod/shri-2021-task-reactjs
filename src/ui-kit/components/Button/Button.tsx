@@ -24,14 +24,15 @@ const Button: React.FC<ButtonProps> = (props) => {
     type = 'button',
   } = props;
 
+  const themeClassName = `button_theme_${theme}`;
+
   return (
     <button
       className={classNames(
         styles.button,
+        styles[themeClassName],
         {
           [styles.button_disabled]: isDisabled,
-          [styles.button_theme_primary]: theme === 'primary',
-          [styles.button_theme_secondary]: theme === 'secondary',
           [styles.buttonHasIconLeft]: Boolean(iconLeft),
         },
         className,

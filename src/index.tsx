@@ -5,6 +5,7 @@ import Button from 'UiKit/components/Button';
 import Icon from 'UiKit/components/Icon';
 import IconButton from 'UiKit/components/IconButton';
 import TextField from 'UiKit/components/TextField';
+import Typography from 'UiKit/components/Typography';
 
 import 'UiKit/theme/index.css';
 
@@ -13,6 +14,12 @@ const createApp = (): void => {
     <div>
       <h1>UI Kit here</h1>
       Hello! It&apos;s my feature CLI Server React app
+
+      <h3>Typography</h3>
+
+      <Typography tagName="h1" size="l">philip1967/my-awesome-repo</Typography>
+
+      <Typography tagName="p" theme="gray" size="xs">Configure repository connection and synchronization settings.</Typography>
 
       <h3>Inputs</h3>
 

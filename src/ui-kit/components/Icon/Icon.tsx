@@ -19,9 +19,7 @@ const Icon: React.FC<IconProps> = (props) => {
   return (
     <div className={classNames(
       styles.icon,
-      // @ts-ignore // TODO: Declare iconClassName, sizeClassName in css.d.ts
       styles[iconClassName],
-      // @ts-ignore
       styles[sizeClassName],
       className,
     )}

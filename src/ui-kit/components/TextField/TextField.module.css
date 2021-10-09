@@ -13,7 +13,7 @@
 
 .text-field__label {
   color: var(--color-text);
-  font-size: 13px;
+  font-size: var(--font-size-xs);
   line-height: 18px;
 
   .text-field_label-position_top & {

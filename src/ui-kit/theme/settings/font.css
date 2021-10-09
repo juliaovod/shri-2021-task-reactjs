@@ -2,6 +2,10 @@
 
 :root {
   --font: 'YS Text', arial, sans-serif;
+  --font-size-xs: 13px;
+  --font-size-s: 15px;
+  --font-size-m: 18px;
+  --font-size-l: 24px;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;

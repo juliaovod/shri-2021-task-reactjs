@@ -6,7 +6,7 @@
   border-width: 2px;
   color: var(--color-text);
   display: block;
-  font-size: 13px;
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-normal);
   height: 36px;
   line-height: 13px;

@@ -21,13 +21,12 @@ const TextField: React.FC<TextFieldProps> = (props) => {
     ...inputProps
   } = props;
 
+  const labelPositionClassName = `text-field_label-position_${labelPosition}`;
+
   return (
     <div className={classNames(
       styles.textField,
-      {
-        [styles.textFieldLabelPositionTop]: labelPosition === 'top',
-        [styles.textFieldLabelPositionLeft]: labelPosition === 'left',
-      },
+      styles[labelPositionClassName],
       className,
     )}
     >

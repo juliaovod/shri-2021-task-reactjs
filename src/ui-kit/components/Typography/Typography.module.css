@@ -1,0 +1,44 @@
+.typography {
+  margin: 0;
+}
+
+.typography_theme_black {
+  color: var(--color-text);
+}
+
+.typography_theme_gray {
+  color: var(--color-blue-gray-500);
+}
+
+.typography_theme_ghost {
+  color: var(--color-text);
+  opacity: 0.65;
+}
+
+.typography_size_xs {
+  font-size: var(--font-size-xs);
+}
+
+.typography_size_s {
+  font-size: var(--font-size-s);
+}
+
+.typography_size_m {
+  font-size: var(--font-size-m);
+}
+
+.typography_size_l {
+  font-size: var(--font-size-l);
+}
+
+.typography_weight_400 {
+  font-weight: var(--font-weight-normal);
+}
+
+.typography_weight_500 {
+  font-weight: var(--font-weight-medium);
+}
+
+.typography_weight_600 {
+  font-weight: var(--font-weight-semi-bold);
+}

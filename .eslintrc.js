@@ -30,6 +30,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-use-before-define': ['error'],
     'comma-dangle': 'error',
@@ -39,6 +40,7 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-double'],
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['accum', 'memo'] }],
+    'no-shadow': 'off',
     'no-unused-expressions': ['error'],
     'no-unused-vars': 'off',
     'no-use-before-define': 'off',

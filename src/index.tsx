@@ -20,6 +20,8 @@ const createApp = (): void => {
 
       <TextField label="Field left" value="Are you happy?" labelPosition="left" />
 
+      <TextField value="I am disabled" isDisabled />
+
       <h2>Buttons</h2>
 
       <Button>Save</Button>

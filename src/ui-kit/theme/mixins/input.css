@@ -33,6 +33,7 @@
   &_disabled,
   &:disabled {
     background: var(--color-background-disabled);
+    color: var(--color-text-disabled);
     pointer-events: none;
   }
 }

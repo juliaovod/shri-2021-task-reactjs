@@ -51,7 +51,7 @@ const Input: React.FC<InputProps> = (props) => {
 
   return (
     <div className={classNames(styles.input, className)}>
-      {(isClearable && value) && (
+      {(isClearable && !isDisabled && value) && (
         <button
           className={classNames(styles.input__clear)}
           onClick={onClear}

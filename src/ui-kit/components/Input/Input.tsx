@@ -8,7 +8,6 @@ import styles from './Input.module.css';
 
 export type InputProps = {
   className?: string;
-  defaultValue?: string;
   id?: string;
   isClearable?: boolean;
   isDisabled?: boolean;
@@ -28,7 +27,6 @@ export type InputProps = {
 const Input: React.FC<InputProps> = (props) => {
   const {
     className,
-    defaultValue = '',
     id,
     isClearable = true,
     isDisabled = false,
@@ -68,7 +66,6 @@ const Input: React.FC<InputProps> = (props) => {
             [styles.inputControlClearable]: isClearable,
           },
         )}
-        defaultValue={defaultValue}
         disabled={isDisabled}
         id={id}
         name={name}

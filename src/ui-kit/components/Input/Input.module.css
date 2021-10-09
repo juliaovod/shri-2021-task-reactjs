@@ -1,0 +1,23 @@
+.input {
+  position: relative;
+}
+
+.input__control {
+  @mixin input;
+
+  padding: 10px 13px;
+}
+
+.input__control_clearable {
+  padding-right: 36px;
+}
+
+.input__clear {
+  @mixin button;
+
+  height: 36px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 36px;
+}

@@ -2,10 +2,12 @@
   --color-background-action: #fc0;
   --color-background-action-hovered: #f2c200;
   --color-border-action-focused: #b38f00;
-  --color-background-control: #e6e6e6;
   --color-background-control-hovered: #dbdbdb;
+  --color-background-control: #e6e6e6;
   --color-border-control-focused: #b3b3b3;
   --color-background-disabled: #f2f2f2;
+  --color-background-heavy: #d9d9d9;
+  --color-text: #000;
   --color-text-disabled: #7f7f7f;
   --color-blue-gray-50: #f0f2f3;
   --color-blue-gray-500: #7f8285;

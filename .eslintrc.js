@@ -46,6 +46,7 @@ module.exports = {
     'react/button-has-type': ['error', { button: true, reset: true, submit: true, }],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-one-expression-per-line': ['error', { 'allow': 'single-child' }],
+    'react/jsx-props-no-spreading': 'off',
     'react/require-default-props': 'off',
     'react/sort-comp': ['error'],
     'semi': 'error',

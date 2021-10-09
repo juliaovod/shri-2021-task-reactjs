@@ -1,7 +1,8 @@
 .icon {
   align-items: center;
   background-position: 50% 50%;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
   display: inline-flex;
   flex: none;
   justify-content: center;

@@ -27,14 +27,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: isDevelopment,
-            },
-          },
-        ],
+        use: ['ts-loader'],
       },
       {
         test: /\.css$/i,
@@ -46,6 +39,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
+                exportLocalsConvention: 'camelCase',
                 localIdentName: isDevelopment ? '[local]___[hash:base64:10]' : '[hash:base64:10]',
               },
               sourceMap: true,

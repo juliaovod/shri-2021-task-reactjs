@@ -1,0 +1,38 @@
+@define-mixin input {
+  background-color: var(--color-white);
+  border-color: var(--color-background-heavy);
+  border-radius: var(--border-radius-control);
+  border-style: solid;
+  border-width: 2px;
+  color: var(--color-text);
+  display: block;
+  font-size: 13px;
+  font-weight: var(--font-weight-normal);
+  height: 36px;
+  line-height: 13px;
+  outline: none;
+  text-overflow: ellipsis;
+  transition: 0.2s ease;
+  transition-property: background-color, border-color;
+  width: 100%;
+
+  &[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  &::placeholder {
+    color: var(--color-text);
+    opacity: 0.2;
+  }
+
+  &_focused,
+  &:focus {
+    border-color: var(--color-border-control-focused);
+  }
+
+  &_disabled,
+  &:disabled {
+    background: var(--color-background-disabled);
+    pointer-events: none;
+  }
+}

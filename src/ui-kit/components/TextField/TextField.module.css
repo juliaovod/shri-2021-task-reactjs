@@ -1,0 +1,35 @@
+.text-field {
+  display: flex;
+}
+
+.text-field_label-position_top {
+  flex-direction: column;
+}
+
+.text-field_label-position_left {
+  align-items: center;
+  flex-direction: row;
+}
+
+.text-field__label {
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 18px;
+
+  .text-field_label-position_top & {
+    margin-bottom: 6px;
+  }
+
+  .text-field_label-position_left & {
+    margin-right: 8px;
+  }
+}
+
+.text-field__label_required {
+  &::after {
+    color: var(--color-red-500);
+    content: '*';
+    display: inline-flex;
+    margin-left: 2px;
+  }
+}

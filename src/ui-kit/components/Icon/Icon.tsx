@@ -7,7 +7,7 @@ import styles from './Icon.module.css';
 type IconProps = {
   className?: string;
   name: string;
-  size?: 's' | 'm';
+  size?: 'xs' | 's' | 'm';
 }
 
 const Icon: React.FC<IconProps> = (props) => {

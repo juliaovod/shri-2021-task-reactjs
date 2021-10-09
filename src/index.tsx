@@ -26,7 +26,19 @@ const createApp = (): void => {
 
       <Button theme="secondary">Cancel</Button>
 
-      <Button isDisabled>Run build</Button>
+      <Button
+        iconLeft={<Icon name="icon-play" size="xs" />}
+        theme="secondary"
+      >
+        Run build
+      </Button>
+
+      <Button
+        iconLeft={<Icon name="icon-settings" size="xs" />}
+        theme="secondary"
+      >
+        Settings
+      </Button>
 
       <IconButton><Icon name="icon-settings" /></IconButton>
       <IconButton><Icon name="icon-play" /></IconButton>

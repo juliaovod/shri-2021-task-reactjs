@@ -29,6 +29,14 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  overrides: [
+    {
+      'files': ['*.tsx'],
+      'rules': {
+        'no-undef': 'off',
+      },
+    },
+  ],
   rules: {
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-unused-vars': ['error'],

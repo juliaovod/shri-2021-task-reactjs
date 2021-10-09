@@ -11,8 +11,8 @@
   color: var(--color-text);
 }
 
-.typography_theme_gray {
-  color: var(--color-blue-gray-500);
+.typography_theme_grey {
+  color: var(--color-blue-grey-500);
 }
 
 .typography_theme_ghost {

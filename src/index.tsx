@@ -6,8 +6,14 @@ import Icon from 'UiKit/components/Icon';
 import IconButton from 'UiKit/components/IconButton';
 import TextField from 'UiKit/components/TextField';
 import Typography from 'UiKit/components/Typography';
+import DeployCard from '@/components/DeployCard';
 
+import DeployStatusIcon from '@/components/DeployStatusIcon';
+import DeployStatusText from '@/components/DeployStatusText';
 import Footer from '@/components/Footer';
+
+// eslint-disable-next-line camelcase
+import _deployments_mockup from '../_deployments_mockup.json';
 
 import 'UiKit/theme/index.css';
 
@@ -17,21 +23,37 @@ const createApp = (): void => {
       <h1>UI Kit here</h1>
       Hello! It&apos;s my feature CI Server React app
 
-      <h3>Typography</h3>
+      <h2>Deploy card</h2>
+
+      {/* @ts-ignore */}
+      <DeployCard deployment={_deployments_mockup[1]} />
+
+      {/* @ts-ignore */}
+      <DeployStatusIcon deployment={_deployments_mockup[0]} />
+      {/* @ts-ignore */}
+      <DeployStatusText deployment={_deployments_mockup[0]} />
+      {/* @ts-ignore */}
+      <DeployStatusText deployment={_deployments_mockup[1]} />
+      {/* @ts-ignore */}
+      <DeployStatusText deployment={_deployments_mockup[2]} />
+
+      <h2>Typography</h2>
 
       <Typography tagName="h1" size="l">philip1967/my-awesome-repo</Typography>
 
-      <Typography tagName="p" theme="gray" size="xs">Configure repository connection and synchronization settings.</Typography>
+      <Typography tagName="p" theme="grey" size="xs">Configure repository connection and synchronization settings.</Typography>
 
-      <Typography
-        iconLeft={<Icon name="icon-calendar" />}
-        size="xs"
-        tagName="p"
-      >
-        Primary
-      </Typography>
+      <div style={{ display: 'flex' }}>
+        <Icon name="icon-calendar" />
+        <Typography
+          size="xs"
+          tagName="p"
+        >
+          Primary
+        </Typography>
+      </div>
 
-      <h3>Inputs</h3>
+      <h2>Inputs</h2>
 
       <TextField label="Field top" value="I am input" isRequired />
 

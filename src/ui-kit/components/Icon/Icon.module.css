@@ -8,6 +8,14 @@
   justify-content: center;
 }
 
+.icon_theme_black {
+  opacity: 1;
+}
+
+.icon_theme_ghost {
+  opacity: 0.3;
+}
+
 .icon_size_xs {
   height: 12px;
   width: 12px;

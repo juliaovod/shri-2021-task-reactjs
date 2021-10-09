@@ -1,0 +1,10 @@
+.icon-text {
+  align-items: center;
+  display: flex;
+}
+
+.icon-text__icon {
+  align-self: start;
+  display: inline-flex;
+  margin-right: 5px;
+}

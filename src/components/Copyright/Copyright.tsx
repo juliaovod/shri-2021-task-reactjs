@@ -17,7 +17,7 @@ const Copyright: React.FC<TypographyProps> = (props) => {
     <Typography
       className={classNames(styles.copyright, className)}
       size="xs"
-      theme="gray"
+      theme="grey"
     >
       © 2021 Julia Ovod
     </Typography>

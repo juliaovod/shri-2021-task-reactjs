@@ -61,7 +61,7 @@ const Input: React.FC<InputProps> = (props) => {
 
       <input
         className={classNames(
-          styles.input__control,
+          styles.inputControl,
           {
             [styles.inputControlClearable]: isClearable,
           },

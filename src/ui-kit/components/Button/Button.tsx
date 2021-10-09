@@ -32,7 +32,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         styles.button,
         styles[themeClassName],
         {
-          [styles.button_disabled]: isDisabled,
+          [styles.buttonDisabled]: isDisabled,
           [styles.buttonHasIconLeft]: Boolean(iconLeft),
         },
         className,

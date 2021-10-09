@@ -45,6 +45,7 @@ const createApp = (): void => {
 
       <Button
         iconLeft={<Icon name="icon-play" size="xs" />}
+        isDisabled
         theme="secondary"
       >
         Run build

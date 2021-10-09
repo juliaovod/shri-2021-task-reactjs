@@ -46,7 +46,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: isDevelopment ? '[name]__[local]___[hash:base64:10]' : '[hash:base64:10]',
+                localIdentName: isDevelopment ? '[local]___[hash:base64:10]' : '[hash:base64:10]',
               },
               sourceMap: true,
             },

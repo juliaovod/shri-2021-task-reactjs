@@ -1,0 +1,63 @@
+.icon {
+  align-items: center;
+  background-position: 50% 50%;
+  background-size: cover;
+  display: inline-flex;
+  flex: none;
+  justify-content: center;
+}
+
+.icon_size_xs {
+  height: 12px;
+  width: 12px;
+}
+
+.icon_size_s {
+  height: 16px;
+  width: 16px;
+}
+
+.icon_size_m {
+  height: 24px;
+  width: 24px;
+}
+
+.icon_name_icon-calendar {
+  background-image: url('~@/assets/images/icons/icon-calendar.svg');
+}
+
+.icon_name_icon-code-commit {
+  background-image: url('~@/assets/images/icons/icon-code-commit.svg');
+}
+
+.icon_name_icon-clock {
+  background-image: url('~@/assets/images/icons/icon-clock.svg');
+}
+
+.icon_name_icon-done {
+  background-image: url('~@/assets/images/icons/icon-done.svg');
+}
+
+.icon_name_icon-fail {
+  background-image: url('~@/assets/images/icons/icon-fail.svg');
+}
+
+.icon_name_icon-play {
+  background-image: url('~@/assets/images/icons/icon-play.svg');
+}
+
+.icon_name_icon-rebuild {
+  background-image: url('~@/assets/images/icons/icon-rebuild.svg');
+}
+
+.icon_name_icon-settings {
+  background-image: url('~@/assets/images/icons/icon-settings.svg');
+}
+
+.icon_name_icon-stopwatch {
+  background-image: url('~@/assets/images/icons/icon-stopwatch.svg');
+}
+
+.icon_name_icon-user {
+  background-image: url('~@/assets/images/icons/icon-user.svg');
+}

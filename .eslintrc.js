@@ -42,6 +42,7 @@ module.exports = {
     'no-unused-expressions': ['error'],
     'no-unused-vars': 'off',
     'no-use-before-define': 'off',
+    'object-curly-newline': 'off',
     'react/button-has-type': ['error', { button: true, reset: true, submit: true, }],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-one-expression-per-line': ['error', { 'allow': 'single-child' }],

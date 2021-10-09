@@ -12,6 +12,7 @@ type TypographyProps = {
 
 const Copyright: React.FC<TypographyProps> = (props) => {
   const { className } = props;
+
   return (
     <Typography
       className={classNames(styles.copyright, className)}

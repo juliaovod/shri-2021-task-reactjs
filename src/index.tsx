@@ -13,7 +13,7 @@ const createApp = (): void => {
   ReactDOM.render(
     <div>
       <h1>UI Kit here</h1>
-      Hello! It&apos;s my feature CLI Server React app
+      Hello! It&apos;s my feature CI Server React app
 
       <h3>Typography</h3>
 

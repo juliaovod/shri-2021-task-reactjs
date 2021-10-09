@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+.typography_has-icon-left {
+  align-items: center;
+  display: flex;
+}
+
 .typography_theme_black {
   color: var(--color-text);
 }
@@ -41,4 +46,8 @@
 
 .typography_weight_600 {
   font-weight: var(--font-weight-semi-bold);
+}
+
+.typography__icon {
+  margin-right: 5px;
 }

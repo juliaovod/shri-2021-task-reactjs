@@ -6,7 +6,7 @@ import styles from './Button.module.css';
 
 export type ButtonProps = {
   className?: string;
-  iconLeft?: React.ReactNode;
+  iconLeft?: React.ReactElement;
   isDisabled?: boolean;
   onClick?: (e: React.SyntheticEvent) => void;
   theme?: 'primary' | 'secondary';

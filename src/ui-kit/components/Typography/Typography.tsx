@@ -6,6 +6,7 @@ import styles from './Typography.module.css';
 
 type TypographyProps = {
   className?: string;
+  iconLeft?: React.ReactElement;
   size?: 'xs' | 's' | 'm' | 'l';
   style?: React.CSSProperties;
   tagName?: 'h1' | 'h2' | 'p' | 'div' | 'span';
@@ -17,6 +18,7 @@ const Typography: React.FC<TypographyProps> = (props) => {
   const {
     children,
     className,
+    iconLeft = null,
     size = 's',
     style = {},
     tagName = 'div',
@@ -36,11 +38,21 @@ const Typography: React.FC<TypographyProps> = (props) => {
         styles[themeClassName],
         styles[sizeClassName],
         styles[weightClassName],
+        {
+          [styles.typographyHasIconLeft]: Boolean(iconLeft),
+        },
         className,
       ),
       style,
     },
-    children,
+    [
+      iconLeft ? React.cloneElement(iconLeft, {
+        ...iconLeft.props,
+        className: classNames(styles.typographyIcon, iconLeft.props.className),
+        key: 'icon-left',
+      }) : null,
+      children,
+    ],
   );
 };
 

@@ -21,6 +21,14 @@ const createApp = (): void => {
 
       <Typography tagName="p" theme="gray" size="xs">Configure repository connection and synchronization settings.</Typography>
 
+      <Typography
+        iconLeft={<Icon name="icon-calendar" />}
+        size="xs"
+        tagName="p"
+      >
+        Primary
+      </Typography>
+
       <h3>Inputs</h3>
 
       <TextField label="Field top" value="I am input" isRequired />

@@ -17,7 +17,7 @@ const Icon: React.FC<IconProps> = (props) => {
   const sizeClassName = `icon_size_${size}`;
 
   return (
-    <div className={classNames(
+    <span className={classNames(
       styles.icon,
       styles[iconClassName],
       styles[sizeClassName],
@@ -25,7 +25,7 @@ const Icon: React.FC<IconProps> = (props) => {
     )}
     >
       {children}
-    </div>
+    </span>
   );
 };
 

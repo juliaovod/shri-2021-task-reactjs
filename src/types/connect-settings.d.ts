@@ -1,4 +1,4 @@
-type ConnectionSettings = {
+type ConnectSettings = {
   branch: string;
   command: string;
   frequency: string;

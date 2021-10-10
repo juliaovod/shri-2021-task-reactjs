@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--color-white);
+  height: 50px;
+}
+
+.header__container {
+  @mixin layout-container;
+
+  display: flex;
+  justify-content: space-between;
+}

@@ -4,12 +4,12 @@ import classNames from 'classnames';
 
 import styles from './Typography.module.css';
 
-type TypographyProps = {
+export type TypographyProps = {
   className?: string;
   size?: 'xs' | 's' | 'm' | 'l';
   style?: React.CSSProperties;
   tagName?: 'h1' | 'h2' | 'p' | 'div' | 'span';
-  theme?: 'black' | 'grey' | 'ghost';
+  theme?: 'black' | 'grey' | 'ghost' | 'green' | 'red';
   weight?: 400 | 500 | 600;
 }
 

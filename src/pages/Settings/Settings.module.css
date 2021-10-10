@@ -6,7 +6,8 @@
   }
 }
 
-.settings__subtitle {
+.settings__subtitle,
+.settings__saved {
   margin-bottom: 8px;
 }
 

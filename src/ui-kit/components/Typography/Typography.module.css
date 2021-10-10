@@ -20,6 +20,14 @@
   opacity: 0.65;
 }
 
+.typography_theme_green {
+  color: var(--color-green-500);
+}
+
+.typography_theme_red {
+  color: var(--color-red-500);
+}
+
 .typography_size_xs {
   font-size: var(--font-size-xs);
 }

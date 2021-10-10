@@ -51,6 +51,8 @@
 .button_disabled {
   background-color: var(--color-background-disabled);
   color: var(--color-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .button__icon {

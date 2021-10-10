@@ -21,6 +21,9 @@ const Settings: React.FC = () => {
     getConnectSettings(),
   );
 
+  const [isSaved, setIsSaved] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState(false);
+
   const isInvalid = Object.values(state).some(isEmpty);
 
   const handleChange = (name: string) =>
@@ -40,7 +43,15 @@ const Settings: React.FC = () => {
     if (isInvalid) {
       return;
     }
-    saveConnectSettings(state);
+
+    setIsFetching(true);
+    setIsSaved(false);
+
+    saveConnectSettings(state)
+      .then(() => {
+        setIsFetching(false);
+        setIsSaved(true);
+      });
   };
 
   return (
@@ -59,6 +70,16 @@ const Settings: React.FC = () => {
           Configure repository connection and synchronization settings.
         </Typography>
       </header>
+
+      {isSaved && (
+        <Typography
+          className={classNames(styles.settingsSaved)}
+          size="xs"
+          theme="green"
+        >
+          Saved
+        </Typography>
+      )}
 
       <div className={classNames(styles.settingsBody)}>
         <TextField
@@ -118,7 +139,7 @@ const Settings: React.FC = () => {
       <footer className={classNames(styles.settingsFooter)}>
         <Button
           className={classNames(styles.settingsButton)}
-          isDisabled={isInvalid}
+          isDisabled={isInvalid || isFetching}
           onClick={handleSave}
         >
           Save
@@ -126,6 +147,7 @@ const Settings: React.FC = () => {
 
         <Button
           className={classNames(styles.settingsButton)}
+          isDisabled={isFetching}
           path={RoutePaths.INDEX.PATH}
           theme="secondary"
         >

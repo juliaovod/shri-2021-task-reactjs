@@ -9,20 +9,19 @@ import Typography from 'UiKit/components/Typography';
 
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
+import RoutePaths from '@/router/paths';
 
 import styles from './Settings.module.css';
-
-const initialState = {
-  branch: '',
-  command: '',
-  minutes: '10',
-  repository: '',
-};
 
 const Settings: React.FC = () => {
   const [state, setState] = React.useReducer(
     (prevState: any, nextState: any) => (nextState ? ({ ...prevState, ...nextState }) : prevState),
-    initialState,
+    {
+      branch: '',
+      command: '',
+      minutes: '10',
+      repository: '',
+    },
   );
 
   const isInvalid = Object.values(state).some(isEmpty);
@@ -33,10 +32,6 @@ const Settings: React.FC = () => {
         [name]: value,
       });
     };
-
-  const handleCancel = (): void => {
-    setState(initialState);
-  };
 
   const handleClear = (name: string) => (): void => {
     setState({
@@ -123,7 +118,7 @@ const Settings: React.FC = () => {
 
         <Button
           className={classNames(styles.settingsButton)}
-          onClick={handleCancel}
+          path={RoutePaths.INDEX.PATH}
           theme="secondary"
         >
           Cancel

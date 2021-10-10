@@ -16,8 +16,8 @@ const App: React.FC = () => (
       path={RoutePaths.INDEX.PATH}
       render={() => {
         if (hasConnectSettings()) {
-          const connectionSettings = getConnectSettings();
-          return <History connectSettings={connectionSettings} />;
+          const connectSettings = getConnectSettings();
+          return <History connectSettings={connectSettings} />;
         }
         return <Start />;
       }}

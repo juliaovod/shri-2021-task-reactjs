@@ -10,13 +10,13 @@ import styles from './Modal.module.css';
 
 const MODAL_ROOT_ID = 'modal-root';
 
-type ModalProps = {
+export type ModalProps = {
   cancelButton?: React.ReactElement;
   className?: string;
   closeOnClickOutside?: boolean;
   isOpen?: boolean;
   okButton?: React.ReactElement;
-  onClose?: () => boolean;
+  onClose?: () => void;
   title: string;
 }
 

@@ -8,6 +8,7 @@ import IconButton from 'UiKit/components/IconButton';
 import Typography from 'UiKit/components/Typography';
 
 import BuildCard from '@/components/BuildCard';
+import BuildModal from '@/components/BuildModal';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
@@ -23,6 +24,12 @@ type HistoryProps = {
 const History: React.FC<HistoryProps> = (props) => {
   const { connectSettings } = props;
 
+  const [isBuildModalOpen, setBuildModalOpen] = React.useState(false);
+
+  const toggleBuildModal = (): void => {
+    setBuildModalOpen((prevIsOpen) => !prevIsOpen);
+  };
+
   return (
     <Layout header={(
       <Header>
@@ -32,6 +39,7 @@ const History: React.FC<HistoryProps> = (props) => {
           <Button
             className={classNames(styles.historyControl)}
             iconLeft={<Icon size="xs" name="icon-play" />}
+            onClick={toggleBuildModal}
             size="s"
             theme="secondary"
           >
@@ -51,6 +59,11 @@ const History: React.FC<HistoryProps> = (props) => {
       ))}
 
       <Button size="s" theme="secondary">Show more</Button>
+
+      <BuildModal
+        isOpen={isBuildModalOpen}
+        onClose={toggleBuildModal}
+      />
     </Layout>
   );
 };

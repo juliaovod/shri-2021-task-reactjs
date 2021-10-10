@@ -4,12 +4,14 @@ import classNames from 'classnames';
 
 import styles from './Header.module.css';
 
-export const HEADER_CONTAINER_ID = 'header-container';
+const Header: React.FC = (props) => {
+  const { children } = props;
 
-const Header: React.FC = () => (
-  <header className={classNames(styles.header)}>
-    <div className={classNames(styles.headerContainer)} id={HEADER_CONTAINER_ID} />
-  </header>
-);
+  return (
+    <header className={classNames(styles.header)}>
+      <div className={classNames(styles.headerContainer)}>{children}</div>
+    </header>
+  );
+};
 
 export default Header;

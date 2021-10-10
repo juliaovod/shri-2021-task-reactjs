@@ -1,0 +1,60 @@
+.settings__header {
+  margin-bottom: 14px;
+
+  @mixin min-desktop-s {
+    margin-bottom: 22px;
+  }
+}
+
+.settings__subtitle {
+  margin-bottom: 8px;
+}
+
+.settings__body {
+  max-width: 474px;
+}
+
+.settings__field {
+  & + & {
+    margin-top: 18px;
+  }
+}
+
+.settings__sync {
+  align-items: baseline;
+  display: flex;
+  margin-top: 16px;
+
+  @mixin min-desktop-s {
+    margin-top: 20px;
+  }
+}
+
+.settings__time {
+  display: grid;
+  grid-template-columns: auto 52px;
+  margin-right: 8px;
+}
+
+.settings__minutes {
+  color: var(--color-blue-grey-600);
+}
+
+.settings__footer {
+  margin-top: 20px;
+
+  @mixin min-desktop-s {
+    display: flex;
+    margin-top: 24px;
+  }
+}
+
+.settings__button {
+  & + & {
+    margin-top: 12px;
+
+    @mixin min-desktop-s {
+      margin: 0 0 0 8px;
+    }
+  }
+}

@@ -3,21 +3,24 @@ import React from 'react';
 import classNames from 'classnames';
 
 import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 import styles from './Layout.module.css';
 
-const Layout: React.FC = (props) => {
-  const { children } = props;
+type LayoutProps = {
+  header: React.ReactElement;
+}
+
+const Layout: React.FC<LayoutProps> = (props) => {
+  const { children, header } = props;
 
   return (
-    <main className={classNames(styles.layout)}>
-      <Header />
+    <div className={classNames(styles.layout)}>
+      {header}
 
-      <div className={classNames(styles.layoutContainer)}>{children}</div>
+      <main className={classNames(styles.layoutContainer)}>{children}</main>
 
       <Footer />
-    </main>
+    </div>
   );
 };
 

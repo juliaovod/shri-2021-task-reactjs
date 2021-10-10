@@ -14,12 +14,13 @@ export type InputProps = {
   isReadonly?: boolean;
   isRequired?: boolean;
   name?: string;
-  onBlur?: (e: React.SyntheticEvent) => void;
-  onChange?: (e: React.SyntheticEvent, value: string) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>, value: string) => void;
   onClear?: (e: React.SyntheticEvent) => void;
-  onFocus?: (e: React.SyntheticEvent) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
   style?: React.CSSProperties;
+  textAlign?: 'left' | 'right';
   type?: 'email' | 'number' | 'password' | 'text' | 'hidden' | 'search';
   value?: string;
 }
@@ -39,6 +40,7 @@ const Input: React.FC<InputProps> = (props) => {
     onFocus = (e) => e,
     placeholder = 'Введите значение',
     style = {},
+    textAlign = 'left',
     type = 'text',
     value = '',
   } = props;
@@ -46,6 +48,8 @@ const Input: React.FC<InputProps> = (props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e, e.target.value);
   };
+
+  const textAlignClassName = `input__control_text-align_${textAlign}`;
 
   return (
     <div className={classNames(styles.input, className)}>
@@ -62,6 +66,7 @@ const Input: React.FC<InputProps> = (props) => {
       <input
         className={classNames(
           styles.inputControl,
+          styles[textAlignClassName],
           {
             [styles.inputControlClearable]: isClearable,
           },

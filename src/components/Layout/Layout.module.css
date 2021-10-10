@@ -1,5 +1,8 @@
 .layout {
   background-color: var(--color-white);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 .layout__container {

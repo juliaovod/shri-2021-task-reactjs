@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-use-before-define': ['error'],
     'comma-dangle': 'error',
+    'implicit-arrow-linebreak': 'off',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': ['off'],
     'import/prefer-default-export': 'off',

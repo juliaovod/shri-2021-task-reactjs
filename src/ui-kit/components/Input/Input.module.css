@@ -12,6 +12,14 @@
   padding-right: 36px;
 }
 
+.input__control_text-align_left {
+  text-align: left;
+}
+
+.input__control_text-align_right {
+  text-align: right;
+}
+
 .input__clear {
   @mixin button;
 

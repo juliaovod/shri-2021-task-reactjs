@@ -1,7 +1,19 @@
 import React from 'react';
 
-import Layout from '@/components/Layout';
+import { Route, Switch } from 'react-router-dom';
 
-const App: React.FC = () => <Layout>App</Layout>;
+import RoutePaths from '@/router/paths';
+import Settings from '@/pages/Settings';
+
+const App: React.FC = () => (
+  <Switch>
+    <Route
+      component={Settings}
+      path={RoutePaths.SETTINGS.PATH}
+    />
+
+    <Route>App</Route>
+  </Switch>
+);
 
 export default App;

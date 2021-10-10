@@ -103,6 +103,7 @@ const Settings: React.FC = () => {
             onClear={handleClear('minutes')}
             placeholder={null}
             textAlign="right"
+            type="number"
             value={state.minutes}
           />
 

@@ -5,7 +5,6 @@
   border-radius: var(--border-radius-control);
   color: var(--color-black);
   font-size: var(--font-size-xs);
-  height: 36px;
   line-height: 36px;
   padding: 0 20px;
 }
@@ -13,6 +12,14 @@
 .button_has-icon-left {
   align-items: center;
   padding-left: 8px;
+}
+
+.button_size_s {
+  height: 28px;
+}
+
+.button_size_m {
+  height: 36px;
 }
 
 .button_theme_primary {

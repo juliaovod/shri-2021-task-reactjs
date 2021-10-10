@@ -1,0 +1,14 @@
+.history__controls {
+  align-items: center;
+  display: flex;
+}
+
+.history__control {
+  & + & {
+    margin-left: 8px;
+  }
+}
+
+.history__card {
+  margin-bottom: 8px;
+}

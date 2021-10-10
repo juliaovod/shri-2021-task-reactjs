@@ -9,12 +9,13 @@ import styles from './IconButton.module.css';
 type IconButtonProps = Omit<ButtonProps, 'iconLeft' | 'theme'>;
 
 const IconButton: React.FC<IconButtonProps> = (props) => {
-  const { children, className } = props;
+  const { children, className, size = 's' } = props;
 
   return (
     <Button
       {...props}
       className={classNames(styles.iconButton, className)}
+      size={size}
       theme="secondary"
     >
       {children}

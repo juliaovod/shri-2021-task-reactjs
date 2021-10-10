@@ -11,6 +11,7 @@ export type ButtonProps = {
   isDisabled?: boolean;
   onClick?: (e: React.SyntheticEvent) => void;
   path?: string;
+  size?: 's' | 'm';
   theme?: 'primary' | 'secondary';
   type?: 'submit' | 'button';
 }
@@ -23,14 +24,17 @@ const Button: React.FC<ButtonProps> = (props) => {
     isDisabled = false,
     onClick = (e) => e,
     path = null,
+    size = 'm',
     theme = 'primary',
     type = 'button',
   } = props;
 
+  const sizeClassName = `button_size_${size}`;
   const themeClassName = `button_theme_${theme}`;
 
   const buttonClassNames = classNames(
     styles.button,
+    styles[sizeClassName],
     styles[themeClassName],
     {
       [styles.buttonDisabled]: isDisabled,

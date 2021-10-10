@@ -1,0 +1,27 @@
+.modal {
+  background-color: var(--color-white);
+  min-height: 100vh;
+  padding: 20px 16px;
+  position: absolute;
+  width: 100%;
+
+  @mixin min-tablet {
+    border-radius: var(--border-radius-control);
+    max-width: 485px;
+    min-height: unset;
+  }
+}
+
+.modal__header {
+  margin-bottom: 12px;
+}
+
+.modal__footer {
+  display: flex;
+}
+
+.modal__button {
+  & + & {
+    margin-left: 10px;
+  }
+}

@@ -1,0 +1,9 @@
+:root {
+  --z-index-disabled: 0;
+  --z-index-xs: 2;
+  --z-index-s: 4;
+  --z-index-m: 6;
+  --z-index-l: 8;
+  --z-index-xl: 10;
+  --z-index-xxl: 12;
+}

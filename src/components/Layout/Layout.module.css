@@ -1,0 +1,7 @@
+.layout {
+  background-color: var(--color-white);
+}
+
+.layout__container {
+  @mixin layout-container;
+}

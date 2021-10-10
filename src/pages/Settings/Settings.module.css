@@ -41,10 +41,12 @@
 }
 
 .settings__footer {
+  display: flex;
+  flex-direction: column;
   margin-top: 20px;
 
-  @mixin min-desktop-s {
-    display: flex;
+  @mixin min-tablet {
+    flex-direction: row;
     margin-top: 24px;
   }
 }
@@ -53,7 +55,7 @@
   & + & {
     margin-top: 12px;
 
-    @mixin min-desktop-s {
+    @mixin min-tablet {
       margin: 0 0 0 8px;
     }
   }

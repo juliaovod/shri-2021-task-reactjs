@@ -7,8 +7,7 @@
   font-size: var(--font-size-xs);
   height: 36px;
   line-height: 36px;
-  min-width: 80px;
-  padding: 0 13px;
+  padding: 0 20px;
 }
 
 .button_has-icon-left {

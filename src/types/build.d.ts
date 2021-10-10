@@ -1,4 +1,4 @@
-type Deploy = {
+type Build = {
   createdAt: string;
   deployable: {
     commit: {
@@ -14,5 +14,5 @@ type Deploy = {
   };
   finishedAt: string;
   id: number;
-  status: import('@/enums/deploy').DeployStatus;
+  status: import('@/enums/build').BuildStatus;
 }

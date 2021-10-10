@@ -1,4 +1,4 @@
-.deploy-card {
+.build-card {
   background-color: var(--color-white);
   border-radius: var(--border-radiud-card);
   box-shadow: 0 0 1px rgba(67, 68, 69, 0.3), 0 1px 1px rgba(67, 68, 69, 0.3);
@@ -16,19 +16,19 @@
   }
 }
 
-.deploy-card__body,
-.deploy-card__info {
+.build-card__body,
+.build-card__info {
   @mixin min-desktop-s {
     display: flex;
   }
 }
 
-.deploy-card__body {
+.build-card__body {
   margin-left: 10px;
   width: 100%;
 }
 
-.deploy-card__info {
+.build-card__info {
   margin-bottom: 8px;
 
   @mixin min-desktop-s {
@@ -36,7 +36,7 @@
   }
 }
 
-.deploy-card__id {
+.build-card__id {
   margin-bottom: 8px;
 
   @mixin min-desktop-s {
@@ -44,7 +44,7 @@
   }
 }
 
-.deploy-card__commit {
+.build-card__commit {
   margin-bottom: 8px;
 
   @mixin min-desktop-s {
@@ -54,9 +54,9 @@
   }
 }
 
-.deploy-card__detail {
+.build-card__detail {
   & + & {
-    .deploy-card__commit & {
+    .build-card__commit & {
       margin-top: 8px;
 
       @mixin min-desktop-s {
@@ -64,7 +64,7 @@
       }
     }
 
-    .deploy-card__datetime & {
+    .build-card__datetime & {
       margin-left: 10px;
 
       @mixin min-desktop-s {
@@ -74,11 +74,11 @@
   }
 }
 
-.deploy-card__branch {
+.build-card__branch {
   margin-right: 4px;
 }
 
-.deploy-card__datetime {
+.build-card__datetime {
   align-items: baseline;
   border-top: 1px solid var(--color-blue-grey-50);
   display: flex;

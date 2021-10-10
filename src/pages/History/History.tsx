@@ -7,12 +7,12 @@ import Icon from 'UiKit/components/Icon';
 import IconButton from 'UiKit/components/IconButton';
 import Typography from 'UiKit/components/Typography';
 
-import DeployCard from '@/components/DeployCard';
+import BuildCard from '@/components/BuildCard';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
 
-import deploys from '../../../_deployments_mockup.json';
+import builds from '../../../_builds_mockup.json';
 
 import styles from './History.module.css';
 
@@ -45,9 +45,9 @@ const History: React.FC<HistoryProps> = (props) => {
       </Header>
     )}
     >
-      {deploys.map((deploy) => (
+      {builds.map((build) => (
         // @ts-ignore
-        <DeployCard className={classNames(styles.historyCard)} deploy={deploy} key={deploy.id} />
+        <BuildCard className={classNames(styles.historyCard)} build={build} key={build.id} />
       ))}
 
       <Button size="s" theme="secondary">Show more</Button>

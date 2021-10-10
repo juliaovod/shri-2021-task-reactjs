@@ -1,17 +1,17 @@
-.deploy-status-text {
+.build-status-text {
   font-size: 18px; /* FIXME: Add variable to ui-kit/settings/font */
   font-weight: var(--font-weight-medium);
   line-height: 20px;
 }
 
-.deploy-status-text_success {
+.build-status-text_success {
   color: var(--color-green-500);
 }
 
-.deploy-status-text_running {
+.build-status-text_running {
   color: var(--color-orange-500);
 }
 
-.deploy-status-text_failed {
+.build-status-text_failed {
   color: var(--color-red-500);
 }

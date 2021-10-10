@@ -24,7 +24,7 @@ const Settings: React.FC = () => {
   const [isSaved, setIsSaved] = React.useState(false);
   const [isFetching, setIsFetching] = React.useState(false);
 
-  const isInvalid = Object.values(state).some(isEmpty);
+  const isInvalid = Object.values(state).some(isEmpty) || Number(state.frequency) <= 0;
 
   const handleChange = (name: string) =>
     (e: React.ChangeEvent<HTMLInputElement>, value: string): void => {

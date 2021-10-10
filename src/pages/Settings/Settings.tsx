@@ -19,7 +19,7 @@ const Settings: React.FC = () => {
     {
       branch: '',
       command: '',
-      minutes: '10',
+      frequency: '10',
       repository: '',
     },
   );
@@ -64,6 +64,7 @@ const Settings: React.FC = () => {
           label="GitHub repository"
           onChange={handleChange('repository')}
           onClear={handleClear('repository')}
+          placeholder="user-name/repo-name"
           value={state.repository}
         />
 
@@ -74,6 +75,7 @@ const Settings: React.FC = () => {
           label="Build command"
           onChange={handleChange('command')}
           onClear={handleClear('command')}
+          placeholder="npm ci && npm run build"
           value={state.command}
         />
 
@@ -84,22 +86,23 @@ const Settings: React.FC = () => {
           label="Main branch"
           onChange={handleChange('branch')}
           onClear={handleClear('branch')}
+          placeholder="master"
           value={state.branch}
         />
 
         <div className={classNames(styles.settingsSync)}>
           <TextField
             className={classNames(styles.settingsTime)}
-            id="minutes"
+            id="frequency"
             isClearable={false}
             label="Synchronize every"
             labelPosition="left"
-            onChange={handleChange('minutes')}
-            onClear={handleClear('minutes')}
-            placeholder={null}
+            onChange={handleChange('frequency')}
+            onClear={handleClear('frequency')}
+            placeholder="10"
             textAlign="right"
             type="number"
-            value={state.minutes}
+            value={state.frequency}
           />
 
           <Typography className={classNames(styles.settingsMinutes)} size="xs" tagName="span">

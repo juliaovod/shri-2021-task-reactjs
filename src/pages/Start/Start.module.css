@@ -1,0 +1,23 @@
+.start {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 94px;
+
+  @mixin min-tablet {
+    padding-top: 206px;
+  }
+}
+
+.start__shape {
+  background: url('~@/assets/images/configuration.svg') 50% 50% no-repeat;
+  background-size: contain;
+  height: 124px;
+  width: 124px;
+}
+
+.start__text {
+  line-height: 16px;
+  margin: 32px 0 24px;
+  text-align: center;
+}

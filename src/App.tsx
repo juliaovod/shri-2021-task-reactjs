@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import RoutePaths from '@/router/paths';
 import Settings from '@/pages/Settings';
+import Start from '@/pages/Start';
 
 const App: React.FC = () => (
   <Switch>
@@ -12,7 +13,7 @@ const App: React.FC = () => (
       path={RoutePaths.SETTINGS.PATH}
     />
 
-    <Route>App</Route>
+    <Route><Start /></Route>
   </Switch>
 );
 

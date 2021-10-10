@@ -2,11 +2,10 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import getDateDistance from 'UiKit/utils/getDateDistance';
-import getDateTime from 'UiKit/utils/getDateTime';
 import Icon from 'UiKit/components/Icon';
 import IconText from 'UiKit/components/IconText';
 import Typography from 'UiKit/components/Typography';
+import { getDateDistance, getDateTime } from 'UiKit/utils/date';
 
 import DeployStatusIcon from '@/components/DeployStatusIcon';
 import DeployStatusText from '@/components/DeployStatusText';
@@ -15,29 +14,29 @@ import styles from './DeployCard.module.css';
 
 type DeployCardProps = {
   className?: string;
-  deployment: Deployment;
+  deploy: DeployBuild;
 }
 
 const DeployCard: React.FC<DeployCardProps> = (props) => {
-  const { className, deployment } = props;
+  const { className, deploy } = props;
 
   const {
     createdAt,
     deployable: { commit, ref },
     finishedAt,
     id,
-  } = deployment;
+  } = deploy;
 
   return (
     <div className={classNames(styles.deployCard, className)}>
-      <DeployStatusIcon deployment={deployment} />
+      <DeployStatusIcon deploy={deploy} />
 
       <div className={classNames(styles.deployCardBody)}>
         <div>
           <div className={classNames(styles.deployCardInfo)}>
             <DeployStatusText
               className={classNames(styles.deployCardId)}
-              deployment={deployment}
+              deploy={deploy}
             >
               #
               {id}

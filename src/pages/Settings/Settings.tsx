@@ -6,6 +6,7 @@ import { isEmpty } from 'ramda';
 import Button from 'UiKit/components/Button';
 import TextField from 'UiKit/components/TextField';
 import Typography from 'UiKit/components/Typography';
+import { getDeploySettings, saveDeploySettings } from 'UiKit/utils/deploy-settings';
 
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
@@ -15,13 +16,9 @@ import styles from './Settings.module.css';
 
 const Settings: React.FC = () => {
   const [state, setState] = React.useReducer(
-    (prevState: any, nextState: any) => (nextState ? ({ ...prevState, ...nextState }) : prevState),
-    {
-      branch: '',
-      command: '',
-      frequency: '10',
-      repository: '',
-    },
+    (prevState: DeploySettings, nextState: { [key: string]: string }) =>
+      (nextState ? ({ ...prevState, ...nextState }) : prevState),
+    getDeploySettings(),
   );
 
   const isInvalid = Object.values(state).some(isEmpty);
@@ -37,6 +34,13 @@ const Settings: React.FC = () => {
     setState({
       [name]: '',
     });
+  };
+
+  const handleSave = (): void => {
+    if (isInvalid) {
+      return;
+    }
+    saveDeploySettings(state);
   };
 
   return (
@@ -115,6 +119,7 @@ const Settings: React.FC = () => {
         <Button
           className={classNames(styles.settingsButton)}
           isDisabled={isInvalid}
+          onClick={handleSave}
         >
           Save
         </Button>

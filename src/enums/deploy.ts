@@ -1,4 +1,4 @@
-export enum DeploymentStatus {
+export enum DeployStatus {
   Canceled = 'canceled',
   Created = 'created',
   Failed = 'failed',

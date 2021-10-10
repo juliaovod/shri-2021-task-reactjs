@@ -4,26 +4,26 @@ import classNames from 'classnames';
 
 import Icon from 'UiKit/components/Icon';
 
-import { DeploymentStatus } from '@/enums/deployment';
+import { DeployStatus } from '@/enums/deploy';
 
 type DeployStatusIconProps = {
   className?: string;
-  deployment: Deployment;
+  deploy: DeployBuild;
 }
 
 const DEPLOY_STATUS_ICONS: { [key: string]: string } = {
-  [DeploymentStatus.Failed]: 'icon-fail',
-  [DeploymentStatus.Running]: 'icon-clock',
-  [DeploymentStatus.Success]: 'icon-done',
+  [DeployStatus.Failed]: 'icon-fail',
+  [DeployStatus.Running]: 'icon-clock',
+  [DeployStatus.Success]: 'icon-done',
 };
 
 const DeployStatusIcon: React.FC<DeployStatusIconProps> = (props) => {
-  const { className, deployment } = props;
+  const { className, deploy } = props;
 
   return (
     <Icon
       className={classNames(className)}
-      name={DEPLOY_STATUS_ICONS[deployment.status]}
+      name={DEPLOY_STATUS_ICONS[deploy.status]}
       size="m"
     />
   );

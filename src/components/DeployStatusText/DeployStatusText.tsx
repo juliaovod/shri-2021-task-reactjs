@@ -6,13 +6,13 @@ import styles from './DeployStatusText.css';
 
 type DeployStatusIdProps = {
   className?: string;
-  deployment: Deployment;
+  deploy: DeployBuild;
 }
 
 const DeployStatusText: React.FC<DeployStatusIdProps> = (props) => {
-  const { className, children, deployment } = props;
+  const { className, children, deploy } = props;
 
-  const statusClassName = `deploy-status-text_${deployment.status}`;
+  const statusClassName = `deploy-status-text_${deploy.status}`;
 
   return (
     <div className={classNames(

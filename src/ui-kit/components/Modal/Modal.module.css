@@ -18,6 +18,7 @@
 
 .modal__footer {
   display: flex;
+  margin-top: 12px;
 }
 
 .modal__button {

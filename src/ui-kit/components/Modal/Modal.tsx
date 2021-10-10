@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import classNames from 'classnames';
 
@@ -6,6 +7,8 @@ import Overlay from 'UiKit/components/Overlay';
 import Typography from 'UiKit/components/Typography';
 
 import styles from './Modal.module.css';
+
+const MODAL_ROOT_ID = 'modal-root';
 
 type ModalProps = {
   cancelButton?: React.ReactElement;
@@ -36,7 +39,7 @@ const Modal: React.FC<ModalProps> = (props) => {
   };
 
   if (isOpen) {
-    return (
+    return ReactDOM.createPortal((
       <Overlay onClick={onClickOutside}>
         <div className={classNames(styles.modal, className)}>
           <header className={classNames(styles.modalHeader)}>
@@ -54,7 +57,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           )}
         </div>
       </Overlay>
-    );
+    ), document.getElementById(MODAL_ROOT_ID));
   }
 
   return null;

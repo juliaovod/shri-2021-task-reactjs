@@ -15,7 +15,7 @@ const createApp = (): void => {
     <Router history={browserHistory}>
       <App />
     </Router>,
-    document.getElementById('root'),
+    document.getElementById('app-root'),
   );
 };
 

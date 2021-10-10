@@ -6,7 +6,7 @@
 .footer__container {
   @mixin layout-container;
 
-  @mixin min-desktop-s {
+  @mixin min-tablet {
     display: flex;
     justify-content: space-between;
   }
@@ -15,7 +15,7 @@
 .footer__nav {
   margin-bottom: 8px;
 
-  @mixin min-desktop-s {
+  @mixin min-tablet {
     margin-bottom: 0;
   }
 }

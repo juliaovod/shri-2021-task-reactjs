@@ -6,7 +6,7 @@ import styles from './DeployStatusText.css';
 
 type DeployStatusIdProps = {
   className?: string;
-  deploy: DeployBuild;
+  deploy: Deploy;
 }
 
 const DeployStatusText: React.FC<DeployStatusIdProps> = (props) => {

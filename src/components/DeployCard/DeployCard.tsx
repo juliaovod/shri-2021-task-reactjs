@@ -14,7 +14,7 @@ import styles from './DeployCard.module.css';
 
 type DeployCardProps = {
   className?: string;
-  deploy: DeployBuild;
+  deploy: Deploy;
 }
 
 const DeployCard: React.FC<DeployCardProps> = (props) => {

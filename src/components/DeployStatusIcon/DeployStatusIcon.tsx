@@ -8,7 +8,7 @@ import { DeployStatus } from '@/enums/deploy';
 
 type DeployStatusIconProps = {
   className?: string;
-  deploy: DeployBuild;
+  deploy: Deploy;
 }
 
 const DEPLOY_STATUS_ICONS: { [key: string]: string } = {

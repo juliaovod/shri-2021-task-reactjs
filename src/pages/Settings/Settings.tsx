@@ -6,7 +6,7 @@ import { isEmpty } from 'ramda';
 import Button from 'UiKit/components/Button';
 import TextField from 'UiKit/components/TextField';
 import Typography from 'UiKit/components/Typography';
-import { getDeploySettings, saveDeploySettings } from 'UiKit/utils/deploy-settings';
+import { getConnectionSettings, saveConnectionSettings } from 'UiKit/utils/connection-settings';
 
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
@@ -16,9 +16,9 @@ import styles from './Settings.module.css';
 
 const Settings: React.FC = () => {
   const [state, setState] = React.useReducer(
-    (prevState: DeploySettings, nextState: { [key: string]: string }) =>
+    (prevState: ConnectionSettings, nextState: { [key: string]: string }) =>
       (nextState ? ({ ...prevState, ...nextState }) : prevState),
-    getDeploySettings(),
+    getConnectionSettings(),
   );
 
   const isInvalid = Object.values(state).some(isEmpty);
@@ -40,7 +40,7 @@ const Settings: React.FC = () => {
     if (isInvalid) {
       return;
     }
-    saveDeploySettings(state);
+    saveConnectionSettings(state);
   };
 
   return (

@@ -6,7 +6,7 @@ import Button, { ButtonProps } from 'UiKit/components/Button';
 
 import styles from './IconButton.module.css';
 
-type IconButtonProps = Omit<ButtonProps, 'iconLeft' | 'theme' | 'type'>;
+type IconButtonProps = Omit<ButtonProps, 'iconLeft' | 'theme'>;
 
 const IconButton: React.FC<IconButtonProps> = (props) => {
   const { children, className } = props;
@@ -16,7 +16,6 @@ const IconButton: React.FC<IconButtonProps> = (props) => {
       {...props}
       className={classNames(styles.iconButton, className)}
       theme="secondary"
-      type="button"
     >
       {children}
     </Button>

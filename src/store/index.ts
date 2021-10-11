@@ -9,8 +9,10 @@ import {
 } from 'redux';
 
 import connectSettings, { connectSettingsReducerName } from '@/store/modules/connect-settings';
+import builds, { buildsReducerName } from '@/store/modules/builds';
 
 const reducers = {
+  [buildsReducerName]: builds,
   [connectSettingsReducerName]: connectSettings,
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'UiKit/components/Button';
 import Icon from 'UiKit/components/Icon';
@@ -13,13 +13,16 @@ import BuildModal from '@/components/BuildModal';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
+import { buildsSelector } from '@/selectors/builds';
 import { connectSettingsSelector } from '@/selectors/connect-settings';
-
-import builds from '../../../_builds_mockup.json';
+import { fetchBuilds } from '@/store/modules/builds';
 
 import styles from './History.module.css';
 
 const History: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const builds = useSelector(buildsSelector);
   const connectSettings = useSelector(connectSettingsSelector);
 
   const [isBuildModalOpen, setBuildModalOpen] = React.useState(false);
@@ -27,6 +30,10 @@ const History: React.FC = () => {
   const toggleBuildModal = (): void => {
     setBuildModalOpen((prevIsOpen) => !prevIsOpen);
   };
+
+  React.useEffect(() => {
+    dispatch(fetchBuilds());
+  }, []);
 
   return (
     <Layout header={(
@@ -51,8 +58,7 @@ const History: React.FC = () => {
       </Header>
     )}
     >
-      {builds.map((build) => (
-        // @ts-ignore
+      {builds.map((build: Build) => (
         <BuildCard className={classNames(styles.historyCard)} build={build} key={build.id} />
       ))}
 

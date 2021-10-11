@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import config from '@/config.json';
+import Copyright from '@/components/Copyright';
 import Footer from '@/components/Footer';
 
 import styles from './Layout.module.css';
@@ -20,7 +21,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
       <main className={classNames(styles.layoutContainer)}>{children}</main>
 
-      <Footer />
+      <Footer copyright={<Copyright />} navLinks={config.FOOTER_NAV_LINKS} />
     </div>
   );
 };

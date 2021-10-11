@@ -1,6 +1,6 @@
 .header {
   background-color: var(--color-white);
-  height: 50px;
+  height: var(--header-height);
   margin-bottom: 8px;
 }
 

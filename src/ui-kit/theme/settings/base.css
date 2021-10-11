@@ -1,5 +1,11 @@
 @import '../../../../node_modules/normalize.css';
 
+:root {
+  --footer-height-desktop: 68px;
+  --footer-hegiht-mobile: 32px;
+  --header-height: 50px;
+}
+
 body {
   color: var(--color-black);
   font-family: var(--font);

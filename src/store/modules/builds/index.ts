@@ -1,4 +1,4 @@
-import { getBuilds } from 'UiKit/utils/build';
+import { getBuilds } from '@/entities/build';
 
 interface State {
   builds: Build[];
@@ -18,7 +18,7 @@ const setBuilds = (builds: Build[]) => ({
 });
 
 export const fetchBuilds = () => (dispatch: any): Promise<void> =>
-  getBuilds().then((builds) => {
+  getBuilds().then((builds: Build[]) => {
     dispatch(setBuilds(builds));
   });
 

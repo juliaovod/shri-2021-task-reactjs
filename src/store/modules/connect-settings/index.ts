@@ -1,7 +1,7 @@
 import {
   getConnectSettings,
   saveConnectSettings as saveSettings,
-} from 'UiKit/utils/connect-settings';
+} from '@/entities/connect-settings';
 
 interface State {
   connectSettings: ConnectSettings;

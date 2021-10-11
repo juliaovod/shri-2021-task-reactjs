@@ -5,7 +5,7 @@ import { BuildStatus } from '@/enums/build';
 const getId = customAlphabet('123456789', 5);
 const getCommitHash = customAlphabet('a-z', 40);
 
-import builds from '../../../../_builds_mockup.json';
+import builds from '../../../_builds_mockup.json';
 
 export const getBuilds = (): Promise<Build[]> => {
   const TIMEOUT = 2000;

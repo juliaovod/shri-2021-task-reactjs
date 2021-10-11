@@ -3,12 +3,12 @@
   background-color: var(--color-blue-grey-50);
   bottom: 0;
   display: flex;
-  height: var(--footer-hegiht-mobile);
+  height: var(--footer-height-mobile);
   left: 0;
   position: fixed;
   width: 100%;
 
-  @mixin min-desktop-s {
+  @mixin min-tablet {
     height: var(--footer-height-desktop);
   }
 }

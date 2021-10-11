@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 
-import styles from './BuildStatusText.css';
+import styles from './BuildStatusText.module.css';
 
 type BuildStatusIdProps = {
   className?: string;

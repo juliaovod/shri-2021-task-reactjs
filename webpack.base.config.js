@@ -47,6 +47,12 @@ module.exports = {
           },
           'postcss-loader',
         ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        exclude: /\.module\.css$/,
       },
     ],
   },

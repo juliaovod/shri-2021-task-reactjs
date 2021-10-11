@@ -48,6 +48,7 @@
   }
 }
 
+.button_progress,
 .button_disabled {
   background-color: var(--color-background-disabled);
   color: var(--color-text-disabled);

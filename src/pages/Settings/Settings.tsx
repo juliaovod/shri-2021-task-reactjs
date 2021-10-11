@@ -139,7 +139,8 @@ const Settings: React.FC = () => {
       <footer className={classNames(styles.settingsFooter)}>
         <Button
           className={classNames(styles.settingsButton)}
-          isDisabled={isInvalid || isFetching}
+          isDisabled={isInvalid}
+          isProgress={isFetching}
           onClick={handleSave}
           view="action"
         >

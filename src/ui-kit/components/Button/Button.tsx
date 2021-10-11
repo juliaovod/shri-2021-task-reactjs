@@ -9,11 +9,12 @@ export type ButtonProps = {
   className?: string;
   iconLeft?: React.ReactElement;
   isDisabled?: boolean;
+  isProgress?: boolean;
   onClick?: (e: React.SyntheticEvent) => void;
   path?: string;
   size?: 's' | 'm';
-  view?: 'default' | 'action';
   type?: 'submit' | 'button';
+  view?: 'default' | 'action';
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -22,11 +23,12 @@ const Button: React.FC<ButtonProps> = (props) => {
     className,
     iconLeft = null,
     isDisabled = false,
+    isProgress = false,
     onClick = (e) => e,
     path = null,
     size = 'm',
-    view = 'default',
     type = 'button',
+    view = 'default',
   } = props;
 
   const sizeClassName = `button_size_${size}`;
@@ -39,6 +41,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     {
       [styles.buttonDisabled]: isDisabled,
       [styles.buttonHasIconLeft]: Boolean(iconLeft),
+      [styles.buttonProgress]: isProgress,
     },
     className,
   );

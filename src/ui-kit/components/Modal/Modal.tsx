@@ -6,9 +6,9 @@ import classNames from 'classnames';
 import Overlay from 'UiKit/components/Overlay';
 import Typography from 'UiKit/components/Typography';
 
-import styles from './Modal.module.css';
+import config from '@/config.json';
 
-const MODAL_ROOT_ID = 'modal-root';
+import styles from './Modal.module.css';
 
 export type ModalProps = {
   cancelButton?: React.ReactElement;
@@ -57,7 +57,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           )}
         </div>
       </Overlay>
-    ), document.getElementById(MODAL_ROOT_ID));
+    ), document.getElementById(config.MODAL_ROOT_ID));
   }
 
   return null;

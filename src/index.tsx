@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import { Router } from 'react-router-dom';
 
 import App from '@/App';
+import config from '@/config.json';
 
 import 'UiKit/theme/index.css';
 
@@ -15,7 +16,7 @@ const createApp = (): void => {
     <Router history={browserHistory}>
       <App />
     </Router>,
-    document.getElementById('app-root'),
+    document.getElementById(config.APP_ROOT_ID),
   );
 };
 

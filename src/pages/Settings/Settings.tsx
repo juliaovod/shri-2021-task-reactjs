@@ -6,7 +6,7 @@ import { isEmpty } from 'ramda';
 import Button from 'UiKit/components/Button';
 import TextField from 'UiKit/components/TextField';
 import Typography from 'UiKit/components/Typography';
-import { getConnectSettings, saveConnectSettings } from 'UiKit/utils/connect-settings';
+import { getConnectSettings, saveConnectSettings } from '@/entities/connect-settings';
 
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';

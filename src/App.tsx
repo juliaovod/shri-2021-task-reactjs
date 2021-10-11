@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 
-import { hasConnectSettings, getConnectSettings } from 'UiKit/utils/connect-settings';
+import { hasConnectSettings, getConnectSettings } from '@/entities/connect-settings';
 
 import History from '@/pages/History';
 import RoutePaths from '@/router/paths';

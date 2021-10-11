@@ -2,23 +2,34 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { isEmpty } from 'ramda';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from 'UiKit/components/Button';
 import TextField from 'UiKit/components/TextField';
 import Typography from 'UiKit/components/Typography';
-import { getConnectSettings, saveConnectSettings } from 'UiKit/utils/connect-settings';
 
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
+import { saveConnectSettings } from '@/store/modules/connect-settings';
+import { connectSettingsSelector } from '@/selectors/connect-settings';
 
 import styles from './Settings.module.css';
 
 const Settings: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const connectSettings = useSelector(connectSettingsSelector);
+
   const [state, setState] = React.useReducer(
     (prevState: ConnectSettings, nextState: { [key: string]: string }) =>
       (nextState ? ({ ...prevState, ...nextState }) : prevState),
-    getConnectSettings(),
+    connectSettings || {
+      branch: '',
+      command: '',
+      frequency: '10',
+      repository: '',
+    },
   );
 
   const [isSaved, setIsSaved] = React.useState(false);
@@ -39,7 +50,7 @@ const Settings: React.FC = () => {
     });
   };
 
-  const handleSave = (): void => {
+  const handleSave = async (): Promise<void> => {
     if (isInvalid) {
       return;
     }
@@ -47,11 +58,12 @@ const Settings: React.FC = () => {
     setIsFetching(true);
     setIsSaved(false);
 
-    saveConnectSettings(state)
-      .then(() => {
-        setIsFetching(false);
-        setIsSaved(true);
-      });
+    // FIXME: Use then(), TS2339: Property 'then'
+    //  does not exist on type '(dispatch: any) => Promise '
+    await dispatch(saveConnectSettings(state));
+
+    setIsFetching(false);
+    setIsSaved(true);
   };
 
   return (

@@ -1,11 +1,30 @@
-import { combineReducers, createStore as createReduxStore, Store } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
-const createStore = (): Store => {
-  const reducers = {};
+import {
+  applyMiddleware,
+  combineReducers,
+  compose,
+  createStore as createReduxStore,
+  Store,
+} from 'redux';
 
-  const combinedReducers = combineReducers(reducers);
+import connectSettings, { connectSettingsReducerName } from '@/store/modules/connect-settings';
 
-  return createReduxStore(combinedReducers);
+const reducers = {
+  [connectSettingsReducerName]: connectSettings,
 };
+
+const combinedReducers = combineReducers(reducers);
+
+// @ts-ignore
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const createStore = (): Store => createReduxStore(
+  combinedReducers,
+  {},
+  composeEnhancers(applyMiddleware(thunkMiddleware)),
+);
+
+export type RootState = ReturnType<typeof combinedReducers>
 
 export default createStore;

@@ -1,28 +1,19 @@
 import Cookies from 'js-cookie';
 
-const defaultConnectSettings: ConnectSettings = {
-  branch: '',
-  command: '',
-  frequency: '10',
-  repository: '',
-};
-
-const cookieName = '_ci_server__connect_settings_';
+const cookieKey = '_ci_server__connect_settings_';
 
 export const getConnectSettings = (): ConnectSettings => {
-  const settings = Cookies.get(cookieName);
-  return settings ? JSON.parse(settings) : defaultConnectSettings;
+  const settings = Cookies.get(cookieKey);
+  return settings ? JSON.parse(settings) : null;
 };
 
 export const saveConnectSettings = (settings: ConnectSettings): Promise<void> => {
   const TIMEOUT = 2000;
+
   return new Promise((resolve) => {
     setTimeout(() => {
-      Cookies.set(cookieName, JSON.stringify(settings));
+      Cookies.set(cookieKey, JSON.stringify(settings));
       resolve();
     }, TIMEOUT);
   });
 };
-
-export const hasConnectSettings = (): boolean =>
-  Boolean(Cookies.get(cookieName));

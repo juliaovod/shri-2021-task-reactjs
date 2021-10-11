@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 
 import Button from 'UiKit/components/Button';
 import Icon from 'UiKit/components/Icon';
@@ -12,17 +13,14 @@ import BuildModal from '@/components/BuildModal';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
+import { connectSettingsSelector } from '@/selectors/connect-settings';
 
 import builds from '../../../_builds_mockup.json';
 
 import styles from './History.module.css';
 
-type HistoryProps = {
-  connectSettings: ConnectSettings;
-}
-
-const History: React.FC<HistoryProps> = (props) => {
-  const { connectSettings } = props;
+const History: React.FC = () => {
+  const connectSettings = useSelector(connectSettingsSelector);
 
   const [isBuildModalOpen, setBuildModalOpen] = React.useState(false);
 

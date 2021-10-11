@@ -141,6 +141,7 @@ const Settings: React.FC = () => {
           className={classNames(styles.settingsButton)}
           isDisabled={isInvalid || isFetching}
           onClick={handleSave}
+          view="action"
         >
           Save
         </Button>
@@ -149,7 +150,6 @@ const Settings: React.FC = () => {
           className={classNames(styles.settingsButton)}
           isDisabled={isFetching}
           path={RoutePaths.INDEX.PATH}
-          theme="secondary"
         >
           Cancel
         </Button>

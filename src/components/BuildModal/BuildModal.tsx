@@ -22,7 +22,7 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
   return (
     <Modal
       {...otherProps}
-      cancelButton={<Button onClick={onClose} theme="secondary">Cancel</Button>}
+      cancelButton={<Button onClick={onClose}>Cancel</Button>}
       okButton={<Button isDisabled={isInvalid}>Run build</Button>}
       onClose={onClose}
       title="New build"

@@ -12,7 +12,7 @@ export type ButtonProps = {
   onClick?: (e: React.SyntheticEvent) => void;
   path?: string;
   size?: 's' | 'm';
-  theme?: 'primary' | 'secondary';
+  view?: 'default' | 'action';
   type?: 'submit' | 'button';
 }
 
@@ -25,17 +25,17 @@ const Button: React.FC<ButtonProps> = (props) => {
     onClick = (e) => e,
     path = null,
     size = 'm',
-    theme = 'primary',
+    view = 'default',
     type = 'button',
   } = props;
 
   const sizeClassName = `button_size_${size}`;
-  const themeClassName = `button_theme_${theme}`;
+  const viewClassName = `button_view_${view}`;
 
   const buttonClassNames = classNames(
     styles.button,
     styles[sizeClassName],
-    styles[themeClassName],
+    styles[viewClassName],
     {
       [styles.buttonDisabled]: isDisabled,
       [styles.buttonHasIconLeft]: Boolean(iconLeft),

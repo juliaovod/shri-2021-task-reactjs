@@ -1,15 +1,7 @@
 type Build = {
   createdAt: string;
   deployable: {
-    commit: {
-      authorEmail: string;
-      authorName: string;
-      createdAt: string;
-      id: string;
-      message: string;
-      shortId: string;
-      title: string;
-    };
+    commit: Commit;
     ref: string;
   };
   finishedAt: string;

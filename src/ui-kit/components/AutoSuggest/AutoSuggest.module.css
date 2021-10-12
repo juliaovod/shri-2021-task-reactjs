@@ -1,0 +1,42 @@
+.auto-suggest__container {
+  position: relative;
+}
+
+.auto-suggest__input {
+  @mixin input;
+
+  padding: 10px 13px;
+}
+
+.auto-suggest__suggestions-container {
+  --extra-space: 5px;
+
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-control);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: calc(var(--input-height) + var(--extra-space));
+  width: 100%;
+}
+
+.auto-suggest__suggestion-list {
+  list-style-type: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.auto-suggest__suggestion {
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-xs);
+  min-height: 30px;
+  padding: 10px 12px;
+  transition: background-color 0.2s ease-out;
+  user-select: none;
+
+  &:hover {
+    background-color: var(--color-background-control-hovered);
+  }
+}

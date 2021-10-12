@@ -1,9 +1,10 @@
 @import '../../../../node_modules/normalize.css';
 
 :root {
-  --footer-height-mobile: 68px;
   --footer-height-desktop: 32px;
+  --footer-height-mobile: 68px;
   --header-height: 50px;
+  --input-height: 36px;
 }
 
 body {

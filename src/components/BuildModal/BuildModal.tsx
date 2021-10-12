@@ -32,6 +32,7 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
       </Typography>
 
       <TextField
+        autoFocus
         onChange={(e, value) => setCommitHash(value)}
         placeholder="Commit hash"
         value={commitHash}

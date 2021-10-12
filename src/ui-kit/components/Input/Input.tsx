@@ -7,6 +7,7 @@ import Icon from 'UiKit/components/Icon';
 import styles from './Input.module.css';
 
 export type InputProps = {
+  autoFocus?: boolean;
   className?: string;
   id?: string;
   isClearable?: boolean;
@@ -27,6 +28,7 @@ export type InputProps = {
 
 const Input: React.FC<InputProps> = (props) => {
   const {
+    autoFocus = false,
     className,
     id,
     isClearable = true,
@@ -44,6 +46,14 @@ const Input: React.FC<InputProps> = (props) => {
     type = 'text',
     value = '',
   } = props;
+
+  const ref = React.useRef<HTMLInputElement>();
+
+  React.useEffect(() => {
+    if (autoFocus) {
+      ref.current.focus();
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e, e.target.value);
@@ -79,6 +89,7 @@ const Input: React.FC<InputProps> = (props) => {
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={isReadonly}
+        ref={ref}
         required={isRequired}
         style={style}
         type={type}

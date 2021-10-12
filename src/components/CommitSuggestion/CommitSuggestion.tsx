@@ -2,7 +2,7 @@ import React from 'react';
 
 import AutoSuggest from 'UiKit/components/AutoSuggest';
 
-import { getCommitString } from '@/entities/commit';
+import { buildCommitsMap, humanizeCommit } from '@/entities/commit';
 
 type CommitSuggestionProps = {
   commits?: Commit[];
@@ -15,10 +15,10 @@ const CommitSuggestion: React.FC<CommitSuggestionProps> = (props) => {
 
   const [suggestions, setSuggestions] = React.useState<string[]>([]);
 
-  const commitString = commits.map(getCommitString);
+  const commitsMap = buildCommitsMap(commits, humanizeCommit);
 
   const getSuggestions = (inputValue: string): string[] =>
-    commitString.filter((commit: string) =>
+    Object.keys(commitsMap).filter((commit: string) =>
       commit.toLowerCase().lastIndexOf(inputValue.trim().toLowerCase()) !== -1);
 
   return (
@@ -30,7 +30,7 @@ const CommitSuggestion: React.FC<CommitSuggestionProps> = (props) => {
         placeholder: 'Commit hash',
         value,
       }}
-      getSuggestionValue={(suggestion: string) => suggestion}
+      getSuggestionValue={(suggestion: string) => commitsMap[suggestion].shortId}
       onSuggestionsClearRequested={() => setSuggestions([])}
       onSuggestionsFetchRequested={({ value: inputValue }) => {
         onChange(inputValue);

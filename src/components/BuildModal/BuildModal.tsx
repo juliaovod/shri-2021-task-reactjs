@@ -8,7 +8,7 @@ import Modal, { ModalProps } from 'UiKit/components/Modal';
 import Typography from 'UiKit/components/Typography';
 
 import CommitSuggestion from '@/components/CommitSuggestion';
-import { getCommits } from '@/entities/commit';
+import { getCommits, isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './BuildModal.module.css';
 
@@ -24,7 +24,7 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
     getCommits().then(setCommits);
   }, []);
 
-  const isInvalid = isEmpty(commitHash);
+  const isInvalid = isEmpty(commitHash) || isInvalidCommitHash(commitHash, commits);
 
   const handleClose = (): void => {
     setCommitHash('');

@@ -29,7 +29,6 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
   return (
     <Modal
       {...otherProps}
-      isOpen
       cancelButton={<Button onClick={onClose}>Cancel</Button>}
       okButton={<Button isDisabled={isInvalid} view="action">Run build</Button>}
       onClose={onClose}

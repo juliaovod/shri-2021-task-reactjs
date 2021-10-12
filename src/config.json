@@ -1,0 +1,19 @@
+{
+  "APP_ROOT_ID": "app-root",
+  "FOOTER_NAV_LINKS": [
+    {
+      "href": "/",
+      "title": "Support"
+    },
+    {
+      "href": "/",
+      "title": "Learning"
+    },
+    {
+      "href": "/",
+      "title": "Русская версия"
+    }
+  ],
+  "LAYOUT_ROOT_ID": "layout-root",
+  "MODAL_ROOT_ID": "modal-root"
+}

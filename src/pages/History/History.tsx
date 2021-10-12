@@ -46,7 +46,6 @@ const History: React.FC = () => {
             iconLeft={<Icon size="xs" name="icon-play" />}
             onClick={toggleBuildModal}
             size="s"
-            theme="secondary"
           >
             Run build
           </Button>
@@ -62,7 +61,7 @@ const History: React.FC = () => {
         <BuildCard className={classNames(styles.historyCard)} build={build} key={build.id} />
       ))}
 
-      <Button size="s" theme="secondary">Show more</Button>
+      <Button size="s">Show more</Button>
 
       <BuildModal
         isOpen={isBuildModalOpen}

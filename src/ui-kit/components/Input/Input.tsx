@@ -7,6 +7,7 @@ import Icon from 'UiKit/components/Icon';
 import styles from './Input.module.css';
 
 export type InputProps = {
+  autoFocus?: boolean;
   className?: string;
   id?: string;
   isClearable?: boolean;
@@ -27,6 +28,7 @@ export type InputProps = {
 
 const Input: React.FC<InputProps> = (props) => {
   const {
+    autoFocus = false,
     className,
     id,
     isClearable = true,
@@ -45,8 +47,21 @@ const Input: React.FC<InputProps> = (props) => {
     value = '',
   } = props;
 
+  const ref = React.useRef<HTMLInputElement>();
+
+  React.useEffect(() => {
+    if (autoFocus) {
+      ref.current.focus();
+    }
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e, e.target.value);
+  };
+
+  const handleClear = (): void => {
+    onChange(null, '');
+    onClear(null);
   };
 
   const textAlignClassName = `input__control_text-align_${textAlign}`;
@@ -56,7 +71,7 @@ const Input: React.FC<InputProps> = (props) => {
       {(isClearable && !isDisabled && value) && (
         <button
           className={classNames(styles.inputClear)}
-          onClick={onClear}
+          onClick={handleClear}
           type="button"
         >
           <Icon name="icon-clear" />
@@ -79,6 +94,7 @@ const Input: React.FC<InputProps> = (props) => {
         onFocus={onFocus}
         placeholder={placeholder}
         readOnly={isReadonly}
+        ref={ref}
         required={isRequired}
         style={style}
         type={type}

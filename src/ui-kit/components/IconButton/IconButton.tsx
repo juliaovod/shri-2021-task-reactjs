@@ -16,7 +16,6 @@ const IconButton: React.FC<IconButtonProps> = (props) => {
       {...props}
       className={classNames(styles.iconButton, className)}
       size={size}
-      theme="secondary"
     >
       {children}
     </Button>

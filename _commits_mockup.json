@@ -1,0 +1,38 @@
+[
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "id": "33d03678b90d914dbb1b109132516d71a4a03ea8",
+    "message": "replace all `div` to `article`",
+    "shortId": "99d03678",
+    "title": "replace all `div` to `article`"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "id": "33d03678b90d914dbb1b109132516d71a4a03ea8",
+    "message": "Form item has default height align with form size",
+    "shortId": "88d03678",
+    "title": "Form item has default height align with form size"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "id": "77d03678b90d914dbb1b109132516d71a4a03ea8",
+    "message": "add documentation for postgres scaler",
+    "shortId": "77d03678",
+    "title": "add documentation for postgres scaler"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "id": "66d03678b90d914dbb1b109132516d71a4a03ea8",
+    "message": "upgrade typescript to 3.8",
+    "shortId": "66d03678",
+    "title": "upgrade typescript to 3.8"
+  }
+]

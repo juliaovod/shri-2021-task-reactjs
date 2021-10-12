@@ -67,14 +67,16 @@ const BuildCard: React.FC<BuildCardProps> = (props) => {
             className={classNames(styles.buildCardDetail)}
             icon={<Icon name="icon-calendar" theme="ghost" />}
           >
-            <Typography size="xs" theme="ghost">{getDateTime(createdAt)}</Typography>
+            <Typography datetime={createdAt} tagName="time" size="xs" theme="ghost">
+              {getDateTime(createdAt)}
+            </Typography>
           </IconText>
 
           <IconText
             className={classNames(styles.buildCardDetail)}
             icon={<Icon name="icon-stopwatch" theme="ghost" />}
           >
-            <Typography size="xs" theme="ghost">
+            <Typography datetime={finishedAt} tagName="time" size="xs" theme="ghost">
               {getDateDistance(createdAt, finishedAt)}
             </Typography>
           </IconText>

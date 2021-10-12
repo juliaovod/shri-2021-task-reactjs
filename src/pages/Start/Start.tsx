@@ -20,7 +20,6 @@ const Start: React.FC = () => (
       <Button
         iconLeft={<Icon name="icon-settings" />}
         path={RoutePaths.SETTINGS.PATH}
-        theme="secondary"
       >
         Settings
       </Button>
@@ -36,7 +35,7 @@ const Start: React.FC = () => (
         and synchronization settings
       </Typography>
 
-      <Button path={RoutePaths.SETTINGS.PATH}>Open settings</Button>
+      <Button path={RoutePaths.SETTINGS.PATH} view="action">Open settings</Button>
     </div>
   </Layout>
 );

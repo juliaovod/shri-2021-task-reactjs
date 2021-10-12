@@ -5,12 +5,17 @@ import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
+import { initProjectTheme } from 'UiKit/utils/theme';
+
 import App from '@/App';
+import config from '@/config.json';
 import createStore from '@/store';
 
 import 'UiKit/theme/index.css';
 
 const browserHistory = createBrowserHistory();
+
+initProjectTheme();
 
 const createApp = (): void => {
   const store = createStore();
@@ -21,7 +26,7 @@ const createApp = (): void => {
         <App />
       </Router>
     </Provider>,
-    document.getElementById('app-root'),
+    document.getElementById(config.APP_ROOT_ID),
   );
 };
 

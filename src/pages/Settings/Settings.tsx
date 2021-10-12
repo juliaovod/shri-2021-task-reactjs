@@ -44,12 +44,6 @@ const Settings: React.FC = () => {
       });
     };
 
-  const handleClear = (name: string) => (): void => {
-    setState({
-      [name]: '',
-    });
-  };
-
   const handleSave = async (): Promise<void> => {
     if (isInvalid) {
       return;
@@ -100,7 +94,6 @@ const Settings: React.FC = () => {
           isRequired
           label="GitHub repository"
           onChange={handleChange('repository')}
-          onClear={handleClear('repository')}
           placeholder="user-name/repo-name"
           value={state.repository}
         />
@@ -111,7 +104,6 @@ const Settings: React.FC = () => {
           isRequired
           label="Build command"
           onChange={handleChange('command')}
-          onClear={handleClear('command')}
           placeholder="npm ci && npm run build"
           value={state.command}
         />
@@ -122,7 +114,6 @@ const Settings: React.FC = () => {
           isRequired
           label="Main branch"
           onChange={handleChange('branch')}
-          onClear={handleClear('branch')}
           placeholder="master"
           value={state.branch}
         />
@@ -135,7 +126,6 @@ const Settings: React.FC = () => {
             label="Synchronize every"
             labelPosition="left"
             onChange={handleChange('frequency')}
-            onClear={handleClear('frequency')}
             placeholder="10"
             textAlign="right"
             type="number"
@@ -151,8 +141,10 @@ const Settings: React.FC = () => {
       <footer className={classNames(styles.settingsFooter)}>
         <Button
           className={classNames(styles.settingsButton)}
-          isDisabled={isInvalid || isFetching}
+          isDisabled={isInvalid}
+          isProgress={isFetching}
           onClick={handleSave}
+          view="action"
         >
           Save
         </Button>
@@ -161,7 +153,6 @@ const Settings: React.FC = () => {
           className={classNames(styles.settingsButton)}
           isDisabled={isFetching}
           path={RoutePaths.INDEX.PATH}
-          theme="secondary"
         >
           Cancel
         </Button>

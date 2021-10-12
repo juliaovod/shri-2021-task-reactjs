@@ -22,20 +22,7 @@
   height: 36px;
 }
 
-.button_theme_primary {
-  background-color: var(--color-background-action);
-
-  &:hover {
-    background-color: var(--color-background-action-hovered);
-  }
-
-  &:focus {
-    background-color: var(--color-background-action);
-    border-color: var(--color-border-action-focused);
-  }
-}
-
-.button_theme_secondary {
+.button_view_default {
   background-color: var(--color-background-control);
 
   &:hover {
@@ -48,6 +35,20 @@
   }
 }
 
+.button_view_action {
+  background-color: var(--color-background-action);
+
+  &:hover {
+    background-color: var(--color-background-action-hovered);
+  }
+
+  &:focus {
+    background-color: var(--color-background-action);
+    border-color: var(--color-border-action-focused);
+  }
+}
+
+.button_progress,
 .button_disabled {
   background-color: var(--color-background-disabled);
   color: var(--color-text-disabled);

@@ -4,7 +4,7 @@
   grid-template-rows: var(--header-height) 1fr var(--footer-height-mobile);
   min-height: 100vh;
 
-  @mixin min-desktop-s {
+  @mixin min-tablet {
     grid-template-rows: var(--header-height) 1fr var(--footer-height-desktop);
   }
 }

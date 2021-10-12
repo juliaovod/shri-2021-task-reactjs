@@ -26,12 +26,17 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
 
   const isInvalid = isEmpty(commitHash);
 
+  const handleClose = (): void => {
+    setCommitHash('');
+    onClose();
+  };
+
   return (
     <Modal
       {...otherProps}
       cancelButton={<Button onClick={onClose}>Cancel</Button>}
       okButton={<Button isDisabled={isInvalid} view="action">Run build</Button>}
-      onClose={onClose}
+      onClose={handleClose}
       title="New build"
     >
       <Typography className={classNames(styles.buildModalDescription)} size="xs">

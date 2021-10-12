@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import Overlay from 'UiKit/components/Overlay';
 import Typography from 'UiKit/components/Typography';
+import { KeyboardCodeName } from 'UiKit/enums/key-codes';
 
 import config from '@/config.json';
 
@@ -14,6 +15,7 @@ export type ModalProps = {
   cancelButton?: React.ReactElement;
   className?: string;
   closeOnClickOutside?: boolean;
+  closeOnEsc?: boolean;
   isOpen?: boolean;
   okButton?: React.ReactElement;
   onClose?: () => void;
@@ -26,17 +28,48 @@ const Modal: React.FC<ModalProps> = (props) => {
     children,
     className,
     closeOnClickOutside = true,
+    closeOnEsc = true,
     isOpen = false,
     okButton = null,
     onClose = () => undefined,
     title,
   } = props;
 
+  const [isEscapePressed, setIsEscapePressed] = React.useState(false);
+
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === KeyboardCodeName.Escape) {
+      setIsEscapePressed(true);
+    }
+  };
+
   const onClickOutside = (): void => {
     if (closeOnClickOutside) {
       onClose();
     }
   };
+
+  React.useEffect(() => {
+    if (isEscapePressed) {
+      setIsEscapePressed(false);
+
+      if (isOpen) {
+        onClose();
+      }
+    }
+  }, [isEscapePressed]);
+
+  React.useEffect(() => {
+    if (closeOnEsc) {
+      window.addEventListener('keydown', onKeyDown);
+    }
+
+    return () => {
+      if (closeOnEsc) {
+        window.removeEventListener('keydown', onKeyDown);
+      }
+    };
+  }, []);
 
   if (isOpen) {
     return ReactDOM.createPortal((

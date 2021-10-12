@@ -59,6 +59,11 @@ const Input: React.FC<InputProps> = (props) => {
     onChange(e, e.target.value);
   };
 
+  const handleClear = (): void => {
+    onChange(null, '');
+    onClear(null);
+  };
+
   const textAlignClassName = `input__control_text-align_${textAlign}`;
 
   return (
@@ -66,7 +71,7 @@ const Input: React.FC<InputProps> = (props) => {
       {(isClearable && !isDisabled && value) && (
         <button
           className={classNames(styles.inputClear)}
-          onClick={onClear}
+          onClick={handleClear}
           type="button"
         >
           <Icon name="icon-clear" />

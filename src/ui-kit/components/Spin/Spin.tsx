@@ -9,6 +9,7 @@ import styles from './Spin.module.css';
 
 type SpinProps = {
   className?: string;
+  color?: string;
   isProgress?: boolean;
   size?: 's' | 'm';
 }
@@ -19,10 +20,14 @@ const sizeMap: { [key: string]: number } = {
 };
 
 const Spin: React.FC<SpinProps> = (props) => {
-  const { className, isProgress = false, size: sizeProp = 'm' } = props;
+  const {
+    className,
+    color = getThemePropertyValue('--color-background-action'),
+    isProgress = false,
+    size: sizeProp = 'm',
+  } = props;
 
   const size = sizeMap[sizeProp];
-  const color = getThemePropertyValue('--color-black');
 
   if (isProgress) {
     return (

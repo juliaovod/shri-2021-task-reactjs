@@ -3,18 +3,18 @@ import React from 'react';
 import classNames from 'classnames';
 import LoaderSpinner from 'react-loader-spinner';
 
-import { getThemePropertyValue } from 'UiKit/utils/primitive-colors';
-
 import styles from './Spin.module.css';
 
 type SpinProps = {
   className?: string;
   color?: string;
-  isProgress?: boolean;
-  size?: 's' | 'm';
+  isVisible?: boolean;
+  secondaryColor?: string;
+  size?: 's' | 'm' | 'l';
 }
 
 const sizeMap: { [key: string]: number } = {
+  l: 24,
   m: 16,
   s: 8,
 };
@@ -22,14 +22,15 @@ const sizeMap: { [key: string]: number } = {
 const Spin: React.FC<SpinProps> = (props) => {
   const {
     className,
-    color = getThemePropertyValue('--color-background-action'),
-    isProgress = false,
+    color = '#fc0',
+    secondaryColor = '#fc0',
+    isVisible = false,
     size: sizeProp = 'm',
   } = props;
 
   const size = sizeMap[sizeProp];
 
-  if (isProgress) {
+  if (isVisible) {
     return (
       <div
         className={classNames(styles.spin, className)}
@@ -41,10 +42,10 @@ const Spin: React.FC<SpinProps> = (props) => {
         <LoaderSpinner
           color={color}
           height={size}
-          secondaryColor={color}
+          secondaryColor={secondaryColor}
           timeout={0}
           type="TailSpin"
-          visible={isProgress}
+          visible
           width={size}
         />
       </div>

@@ -1,5 +1,5 @@
-export const ProjectThemes = {
-  default: 'ci_server_theme_default',
+export const ProjectThemes: { [key: string]: string } = {
+  default: 'project_theme_default',
 };
 
 export const initProjectTheme = (): void => {

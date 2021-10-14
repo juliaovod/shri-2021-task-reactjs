@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import Overlay from 'UiKit/components/Overlay';
+import Spin from 'UiKit/components/Spin';
 import Typography from 'UiKit/components/Typography';
 import { KeyboardCodeName } from 'UiKit/enums/key-codes';
 
@@ -16,6 +17,7 @@ export type ModalProps = {
   className?: string;
   closeOnClickOutside?: boolean;
   closeOnEsc?: boolean;
+  isFetching?: boolean;
   isOpen?: boolean;
   okButton?: React.ReactElement;
   onClose?: () => void;
@@ -29,6 +31,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     className,
     closeOnClickOutside = true,
     closeOnEsc = true,
+    isFetching = false,
     isOpen = false,
     okButton = null,
     onClose = () => undefined,
@@ -74,7 +77,16 @@ const Modal: React.FC<ModalProps> = (props) => {
   if (isOpen) {
     return ReactDOM.createPortal((
       <Overlay onClick={onClickOutside}>
-        <div className={classNames(styles.modal, className)}>
+        <div className={classNames(
+          styles.modal,
+          {
+            [styles.modalFetching]: isFetching,
+          },
+          className,
+        )}
+        >
+          <Spin className={styles.modalSpin} isVisible={isFetching} size="l" />
+
           <header className={classNames(styles.modalHeader)}>
             <Typography size="m" weight={500}>{title}</Typography>
           </header>

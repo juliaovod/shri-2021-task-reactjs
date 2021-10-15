@@ -29,17 +29,17 @@ const History: React.FC = () => {
 
   const [commits, setCommits] = React.useState<Commit[]>([]);
   const [commitHash, setCommitHash] = React.useState('');
-  const [isBuildModalOpen, setBuildModalOpen] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const isInvalidCommit = isInvalidCommitHash(commitHash, commits);
 
-  const toggleBuildModal = (): void => {
-    setBuildModalOpen((prevIsOpen) => !prevIsOpen);
+  const toggleModal = (): void => {
+    setIsModalOpen((prevIsOpen) => !prevIsOpen);
   };
 
   const handleClose = (): void => {
     setCommitHash('');
-    toggleBuildModal();
+    toggleModal();
   };
 
   React.useEffect(() => {
@@ -56,7 +56,7 @@ const History: React.FC = () => {
           <Button
             className={classNames(styles.historyControl)}
             iconLeft={<Icon size="xs" name="icon-play" />}
-            onClick={toggleBuildModal}
+            onClick={toggleModal}
             size="s"
           >
             Run build
@@ -78,13 +78,13 @@ const History: React.FC = () => {
       <Modal
         cancelButton={<Button onClick={handleClose}>Cancel</Button>}
         description="Enter the commit hash which you want to build."
-        isOpen={isBuildModalOpen}
+        isOpen={isModalOpen}
         okButton={
           <Button isDisabled={isInvalidCommit} view="action">
             Run build
           </Button>
         }
-        onClose={toggleBuildModal}
+        onClose={toggleModal}
         title="New build"
       >
         <CommitSuggest commits={commits} onChange={setCommitHash} value={commitHash} />

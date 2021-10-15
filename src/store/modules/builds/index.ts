@@ -35,7 +35,7 @@ export const addBuild = (commit: Commit) => (dispatch: any, getState: any): Prom
 
   return createBuild(commit).then((build: Build) => {
     const { builds } = getState()[buildsReducerName];
-    dispatch(setBuilds([...builds, build]));
+    dispatch(setBuilds([build, ...builds]));
 
     return new Promise((resolve) => {
       setTimeout(resolve, TIMEOUT);

@@ -17,9 +17,9 @@ import RoutePaths from '@/router/paths';
 import { buildsSelector } from '@/selectors/builds';
 import { commitsSelector } from '@/selectors/commits';
 import { connectSettingsSelector } from '@/selectors/connect-settings';
-import { fetchBuilds } from '@/store/modules/builds';
+import { fetchBuilds, addBuild } from '@/store/modules/builds';
 import { fetchCommits } from '@/store/modules/commits';
-import { isInvalidCommitHash } from '@/entities/commit';
+import { buildCommitsMap, isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './History.module.css';
 
@@ -32,8 +32,11 @@ const History: React.FC = () => {
 
   const [commitHash, setCommitHash] = React.useState('');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState(false);
 
   const isInvalidCommit = isInvalidCommitHash(commitHash, commits);
+
+  const commitsMap = buildCommitsMap(commits);
 
   const toggleModal = (): void => {
     setIsModalOpen((prevIsOpen) => !prevIsOpen);
@@ -42,6 +45,15 @@ const History: React.FC = () => {
   const handleClose = (): void => {
     setCommitHash('');
     toggleModal();
+  };
+
+  const handleAdd = async (): Promise<void> => {
+    setIsFetching(true);
+
+    await dispatch(addBuild(commitsMap[commitHash]));
+
+    handleClose();
+    setIsFetching(false);
   };
 
   React.useEffect(() => {
@@ -80,9 +92,10 @@ const History: React.FC = () => {
       <Modal
         cancelButton={<Button onClick={handleClose}>Cancel</Button>}
         description="Enter the commit hash which you want to build."
+        isFetching={isFetching}
         isOpen={isModalOpen}
         okButton={
-          <Button isDisabled={isInvalidCommit} view="action">
+          <Button isDisabled={isInvalidCommit} onClick={handleAdd} view="action">
             Run build
           </Button>
         }

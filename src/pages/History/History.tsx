@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
+import { reverse } from 'ramda';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'UiKit/components/Button';
@@ -83,7 +84,7 @@ const History: React.FC = () => {
       </Header>
     )}
     >
-      {builds.map((build: Build) => (
+      {reverse(builds).map((build: Build) => (
         <BuildCard className={classNames(styles.historyCard)} build={build} key={build.id} />
       ))}
 

@@ -19,7 +19,7 @@ const setBuilds = (builds: Build[]) => ({
 
 export const fetchBuilds = () => (dispatch: any): Promise<void> =>
   getBuilds().then((builds: Build[]) => {
-    dispatch(setBuilds(builds));
+    dispatch(setBuilds(builds.slice(-3)));
   });
 
 export const addBuild = (commit: Commit) => (dispatch: any, getState: any): Promise<void> => {
@@ -27,7 +27,7 @@ export const addBuild = (commit: Commit) => (dispatch: any, getState: any): Prom
 
   return createBuild(commit).then((build: Build) => {
     const { builds } = getState()[buildsReducerName];
-    dispatch(setBuilds([build, ...builds]));
+    dispatch(setBuilds([...builds, build]));
 
     return new Promise((resolve) => {
       setTimeout(resolve, TIMEOUT);

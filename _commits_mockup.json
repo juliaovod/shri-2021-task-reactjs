@@ -2,7 +2,25 @@
   {
     "authorEmail": "ovoddev@gmail.com",
     "authorName": "Julia Ovod",
-    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "createdAt": "Fri Oct 12 2021 10:00:00 GMT+0300 (Moscow Standard Time)",
+    "id": "a92157a858320c0e17f3a0eca7cfacbff50ea29a",
+    "message": "Add base components, redux",
+    "shortId": "a92157a8",
+    "title": "Add base components, redux"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "Fri Oct 12 2021 11:14:00 GMT+0300 (Moscow Standard Time)",
+    "id": "a92257a858320c0e17f3a0eca7cfacbff50ea29a",
+    "message": "Add dependencies",
+    "shortId": "a92257a8",
+    "title": "Add dependencies"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "Fri Oct 12 2021 11:15:00 GMT+0300 (Moscow Standard Time)",
     "id": "33d03678b90d914dbb1b109132516d71a4a03ea8",
     "message": "replace all `div` to `article`",
     "shortId": "99d03678",
@@ -11,7 +29,7 @@
   {
     "authorEmail": "ovoddev@gmail.com",
     "authorName": "Julia Ovod",
-    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "createdAt": "Fri Oct 13 2021 11:15:00 GMT+0300 (Moscow Standard Time)",
     "id": "33d03678b90d914dbb1b109132516d71a4a03ea8",
     "message": "Form item has default height align with form size",
     "shortId": "88d03678",
@@ -20,19 +38,37 @@
   {
     "authorEmail": "ovoddev@gmail.com",
     "authorName": "Julia Ovod",
-    "createdAt": "2016-08-11T09:36:01.000+02:00",
-    "id": "77d03678b90d914dbb1b109132516d71a4a03ea8",
+    "createdAt": "Fri Oct 13 2021 14:52:15 GMT+0300 (Moscow Standard Time)",
+    "id": "a92057a858320c0e17f3a0eca7cfacbff50ea29a",
+    "message": "Add .editorconfig",
+    "shortId": "a92057a8",
+    "title": ".editorconfig"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "Fri Oct 14 2021 15:54:15 GMT+0300 (Moscow Standard Time)",
+    "id": "a91957a858320c0e17f3a0eca7cfacbff50ea29a",
     "message": "add documentation for postgres scaler",
-    "shortId": "77d03678",
+    "shortId": "a91957a8",
     "title": "add documentation for postgres scaler"
   },
   {
     "authorEmail": "ovoddev@gmail.com",
     "authorName": "Julia Ovod",
-    "createdAt": "2016-08-11T09:36:01.000+02:00",
+    "createdAt": "Fri Oct 15 2021 11:15:00 GMT+0300 (Moscow Standard Time)",
     "id": "66d03678b90d914dbb1b109132516d71a4a03ea8",
     "message": "upgrade typescript to 3.8",
     "shortId": "66d03678",
     "title": "upgrade typescript to 3.8"
+  },
+  {
+    "authorEmail": "ovoddev@gmail.com",
+    "authorName": "Julia Ovod",
+    "createdAt": "Fri Oct 15 2021 16:56:15 GMT+0300 (Moscow Standard Time)",
+    "id": "99d03678b90d914dbb1b109132516d71a4a03ea8",
+    "message": "Merge branch 'ui-kit' into 'master'\r\n\r\nAdd ui-kit components\r\n\r\n\r\n\r\nSee merge request !1",
+    "shortId": "99d03678",
+    "title": "Merge branch 'ui-kit' into 'master'\r"
   }
 ]

@@ -15,19 +15,21 @@ import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
 import { buildsSelector } from '@/selectors/builds';
+import { commitsSelector } from '@/selectors/commits';
 import { connectSettingsSelector } from '@/selectors/connect-settings';
 import { fetchBuilds } from '@/store/modules/builds';
-import { getCommits, isInvalidCommitHash } from '@/entities/commit';
+import { fetchCommits } from '@/store/modules/commits';
+import { isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './History.module.css';
 
 const History: React.FC = () => {
   const dispatch = useDispatch();
 
-  const builds = useSelector(buildsSelector);
   const connectSettings = useSelector(connectSettingsSelector);
+  const commits = useSelector(commitsSelector);
+  const builds = useSelector(buildsSelector);
 
-  const [commits, setCommits] = React.useState<Commit[]>([]);
   const [commitHash, setCommitHash] = React.useState('');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
@@ -44,7 +46,7 @@ const History: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(fetchBuilds());
-    getCommits().then(setCommits);
+    dispatch(fetchCommits());
   }, []);
 
   return (

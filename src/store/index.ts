@@ -10,9 +10,11 @@ import {
 
 import connectSettings, { connectSettingsReducerName } from '@/store/modules/connect-settings';
 import builds, { buildsReducerName } from '@/store/modules/builds';
+import commits, { commitsReducerName } from '@/store/modules/commits';
 
 const reducers = {
   [buildsReducerName]: builds,
+  [commitsReducerName]: commits,
   [connectSettingsReducerName]: connectSettings,
 };
 

@@ -17,6 +17,7 @@ export type ModalProps = {
   className?: string;
   closeOnClickOutside?: boolean;
   closeOnEsc?: boolean;
+  description?: string;
   isFetching?: boolean;
   isOpen?: boolean;
   okButton?: React.ReactElement;
@@ -31,6 +32,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     className,
     closeOnClickOutside = true,
     closeOnEsc = true,
+    description = null,
     isFetching = false,
     isOpen = false,
     okButton = null,
@@ -89,6 +91,12 @@ const Modal: React.FC<ModalProps> = (props) => {
 
           <header className={classNames(styles.modalHeader)}>
             <Typography size="m" weight={500}>{title}</Typography>
+
+            {description && (
+              <Typography className={classNames(styles.modalDescription)} size="xs">
+                {description}
+              </Typography>
+            )}
           </header>
 
           {children}

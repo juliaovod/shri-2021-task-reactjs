@@ -4,22 +4,22 @@ import AutoSuggest from 'UiKit/components/AutoSuggest';
 
 import { buildCommitsMap, humanizeCommit } from '@/entities/commit';
 
-type CommitSuggestionProps = {
+type CommitSuggestProps = {
   commits?: Commit[];
   onChange?: (value: string) => void;
   value?: string;
 }
 
-const CommitSuggestion: React.FC<CommitSuggestionProps> = (props) => {
+const CommitSuggest: React.FC<CommitSuggestProps> = (props) => {
   const { commits = [], onChange = (value) => value, value = '' } = props;
 
-  const [suggestions, setSuggestions] = React.useState<string[]>([]);
+  const [suggestions, setSuggestions] = React.useState<Commit[]>([]);
 
-  const commitsMap = buildCommitsMap(commits, humanizeCommit);
+  const commitsMap = buildCommitsMap(commits);
 
-  const getSuggestions = (inputValue: string): string[] =>
-    Object.keys(commitsMap).filter((commit: string) =>
-      commit.toLowerCase().lastIndexOf(inputValue.trim().toLowerCase()) !== -1);
+  const getSuggestions = (inputValue: string): Commit[] =>
+    Object.values(commitsMap).filter((commit: Commit) =>
+      humanizeCommit(commit).toLowerCase().lastIndexOf(inputValue.trim().toLowerCase()) !== -1);
 
   return (
     <AutoSuggest
@@ -30,16 +30,16 @@ const CommitSuggestion: React.FC<CommitSuggestionProps> = (props) => {
         placeholder: 'Commit hash',
         value,
       }}
-      getSuggestionValue={(suggestion: string) => commitsMap[suggestion].shortId}
+      getSuggestionValue={(suggestion: Commit) => commitsMap[suggestion.shortId].shortId}
       onSuggestionsClearRequested={() => setSuggestions([])}
       onSuggestionsFetchRequested={({ value: inputValue }) => {
         onChange(inputValue);
         setSuggestions(getSuggestions(inputValue));
       }}
-      renderSuggestion={(suggestion: string) => suggestion}
+      renderSuggestion={(suggestion: Commit) => humanizeCommit(suggestion)}
       suggestions={suggestions}
     />
   );
 };
 
-export default CommitSuggestion;
+export default CommitSuggest;

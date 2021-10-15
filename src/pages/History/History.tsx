@@ -6,12 +6,14 @@ import Button from 'UiKit/components/Button';
 import Icon from 'UiKit/components/Icon';
 import IconButton from 'UiKit/components/IconButton';
 import Typography from 'UiKit/components/Typography';
+import Modal from 'UiKit/components/Modal';
 
 import BuildCard from '@/components/BuildCard';
-import BuildModal from '@/components/BuildModal';
+import CommitSuggest from '@/components/CommitSuggest';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
+import { getCommits, isInvalidCommitHash } from '@/entities/commit';
 
 import builds from '../../../_builds_mockup.json';
 
@@ -24,11 +26,24 @@ type HistoryProps = {
 const History: React.FC<HistoryProps> = (props) => {
   const { connectSettings } = props;
 
-  const [isBuildModalOpen, setBuildModalOpen] = React.useState(false);
+  const [commits, setCommits] = React.useState<Commit[]>([]);
+  const [commitHash, setCommitHash] = React.useState('');
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-  const toggleBuildModal = (): void => {
-    setBuildModalOpen((prevIsOpen) => !prevIsOpen);
+  const isInvalidCommit = isInvalidCommitHash(commitHash, commits);
+
+  const toggleModal = (): void => {
+    setIsModalOpen((prevIsOpen) => !prevIsOpen);
   };
+
+  const handleClose = (): void => {
+    setCommitHash('');
+    toggleModal();
+  };
+
+  React.useEffect(() => {
+    getCommits().then(setCommits);
+  }, []);
 
   return (
     <Layout header={(
@@ -39,7 +54,7 @@ const History: React.FC<HistoryProps> = (props) => {
           <Button
             className={classNames(styles.historyControl)}
             iconLeft={<Icon size="xs" name="icon-play" />}
-            onClick={toggleBuildModal}
+            onClick={toggleModal}
             size="s"
           >
             Run build
@@ -59,10 +74,20 @@ const History: React.FC<HistoryProps> = (props) => {
 
       <Button size="s">Show more</Button>
 
-      <BuildModal
-        isOpen={isBuildModalOpen}
-        onClose={toggleBuildModal}
-      />
+      <Modal
+        cancelButton={<Button onClick={handleClose}>Cancel</Button>}
+        description="Enter the commit hash which you want to build."
+        isOpen={isModalOpen}
+        okButton={
+          <Button isDisabled={isInvalidCommit} view="action">
+            Run build
+          </Button>
+        }
+        onClose={toggleModal}
+        title="New build"
+      >
+        <CommitSuggest commits={commits} onChange={setCommitHash} value={commitHash} />
+      </Modal>
     </Layout>
   );
 };

@@ -1,14 +1,14 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import { reverse } from 'ramda';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'UiKit/components/Button';
 import Icon from 'UiKit/components/Icon';
 import IconButton from 'UiKit/components/IconButton';
-import Typography from 'UiKit/components/Typography';
 import Modal from 'UiKit/components/Modal';
+import Spin from 'UiKit/components/Spin';
+import Typography from 'UiKit/components/Typography';
 
 import BuildCard from '@/components/BuildCard';
 import CommitSuggest from '@/components/CommitSuggest';
@@ -18,7 +18,7 @@ import RoutePaths from '@/router/paths';
 import { buildsSelector } from '@/selectors/builds';
 import { commitsSelector } from '@/selectors/commits';
 import { connectSettingsSelector } from '@/selectors/connect-settings';
-import { fetchBuilds, addBuild } from '@/store/modules/builds';
+import { fetchBuilds, fetchMoreBuilds, addBuild } from '@/store/modules/builds';
 import { fetchCommits } from '@/store/modules/commits';
 import { buildCommitsMap, isInvalidCommitHash } from '@/entities/commit';
 
@@ -33,7 +33,8 @@ const History: React.FC = () => {
 
   const [commitHash, setCommitHash] = React.useState('');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [isFetching, setIsFetching] = React.useState(false);
+  const [isAddFetching, setIsAddFetching] = React.useState(false);
+  const [isMoreFetching, setIsMoreFetching] = React.useState(false);
 
   const isInvalidCommit = isInvalidCommitHash(commitHash, commits);
 
@@ -49,12 +50,20 @@ const History: React.FC = () => {
   };
 
   const handleAdd = async (): Promise<void> => {
-    setIsFetching(true);
+    setIsAddFetching(true);
 
     await dispatch(addBuild(commitsMap[commitHash]));
 
     handleClose();
-    setIsFetching(false);
+    setIsAddFetching(false);
+  };
+
+  const handleFetchMore = async (): Promise<void> => {
+    setIsMoreFetching(true);
+
+    await dispatch(fetchMoreBuilds());
+
+    setIsMoreFetching(false);
   };
 
   React.useEffect(() => {
@@ -84,16 +93,18 @@ const History: React.FC = () => {
       </Header>
     )}
     >
-      {reverse(builds).map((build: Build) => (
+      {builds.map((build: Build) => (
         <BuildCard className={classNames(styles.historyCard)} build={build} key={build.id} />
       ))}
 
-      <Button size="s">Show more</Button>
+      {isMoreFetching
+        ? <Spin isVisible />
+        : <Button onClick={handleFetchMore} size="s">Show more</Button>}
 
       <Modal
         cancelButton={<Button onClick={handleClose}>Cancel</Button>}
         description="Enter the commit hash which you want to build."
-        isFetching={isFetching}
+        isFetching={isAddFetching}
         isOpen={isModalOpen}
         okButton={
           <Button isDisabled={isInvalidCommit} onClick={handleAdd} view="action">

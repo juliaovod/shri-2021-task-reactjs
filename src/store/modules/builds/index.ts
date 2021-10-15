@@ -18,9 +18,17 @@ const setBuilds = (builds: Build[]) => ({
 });
 
 export const fetchBuilds = () => (dispatch: any): Promise<void> =>
-  getBuilds().then((builds: Build[]) => {
-    dispatch(setBuilds(builds.slice(-3)));
+  getBuilds({ end: 3, start: 0 }).then((builds: Build[]) => {
+    dispatch(setBuilds(builds));
   });
+
+export const fetchMoreBuilds = () => (dispatch: any, getState: any): Promise<void> => {
+  const { builds } = getState()[buildsReducerName];
+
+  return getBuilds({ end: builds.length + 2, start: builds.length }).then((nextBuilds: Build[]) => {
+    dispatch(setBuilds([...builds, ...nextBuilds]));
+  });
+};
 
 export const addBuild = (commit: Commit) => (dispatch: any, getState: any): Promise<void> => {
   const TIMEOUT = 1000;

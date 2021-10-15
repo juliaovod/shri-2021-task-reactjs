@@ -1,4 +1,5 @@
 import { customAlphabet } from 'nanoid';
+import { reverse } from 'ramda';
 
 import { BuildStatus } from '@/enums/build';
 
@@ -6,13 +7,13 @@ const nanoid = customAlphabet('123456789', 4);
 
 import builds from '../../../_builds_mockup.json';
 
-export const getBuilds = (): Promise<Build[]> => {
+export const getBuilds = (options: { start: number, end: number }): Promise<Build[]> => {
   const TIMEOUT = 2000;
 
   return new Promise((resolve) => {
     setTimeout(() => {
       // @ts-ignore
-      resolve(builds);
+      resolve(reverse(builds).slice(options.start, options.end));
     }, TIMEOUT);
   });
 };

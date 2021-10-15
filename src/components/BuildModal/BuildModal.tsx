@@ -8,14 +8,16 @@ import Modal, { ModalProps } from 'UiKit/components/Modal';
 import Typography from 'UiKit/components/Typography';
 
 import CommitSuggestion from '@/components/CommitSuggestion';
-import { getCommits } from '@/entities/commit';
+import { getCommits, isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './BuildModal.module.css';
 
-type BuildModalProps = Omit<ModalProps, 'title' | 'cancelButton' | 'okButton'>;
+type BuildModalProps = Omit<ModalProps, 'title' | 'cancelButton' | 'okButton'> & {
+  onAddBuild?: (commitHash: string) => void;
+};
 
 const BuildModal: React.FC<BuildModalProps> = (props) => {
-  const { onClose = () => undefined, ...otherProps } = props;
+  const { onClose = () => undefined, onAddBuild = (value) => value, ...otherProps } = props;
 
   const [commits, setCommits] = React.useState<Commit[]>([]);
   const [commitHash, setCommitHash] = React.useState('');
@@ -24,18 +26,26 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
     getCommits().then(setCommits);
   }, []);
 
-  const isInvalid = isEmpty(commitHash);
+  const isInvalid = isEmpty(commitHash) || isInvalidCommitHash(commitHash, commits);
 
   const handleClose = (): void => {
     setCommitHash('');
     onClose();
   };
 
+  const handleAdd = (): void => {
+    onAddBuild(commitHash);
+  };
+
   return (
     <Modal
       {...otherProps}
       cancelButton={<Button onClick={onClose}>Cancel</Button>}
-      okButton={<Button isDisabled={isInvalid} view="action">Run build</Button>}
+      okButton={
+        <Button isDisabled={isInvalid} onClick={handleAdd} view="action">
+          Run build
+        </Button>
+      }
       onClose={handleClose}
       title="New build"
     >

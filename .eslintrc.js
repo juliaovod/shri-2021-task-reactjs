@@ -58,6 +58,7 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-one-expression-per-line': ['error', { 'allow': 'single-child' }],
     'react/jsx-props-no-spreading': 'off',
+    'react/jsx-wrap-multilines': 'off',
     'react/require-default-props': 'off',
     'react/sort-comp': ['error'],
     'semi': 'error',

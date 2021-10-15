@@ -5,11 +5,42 @@
   position: absolute;
   width: 100%;
 
+  &::before {
+    background-color: var(--color-white);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: 0.2s ease-out;
+    transition-property: opacity, visibility;
+    visibility: hidden;
+    width: 100%;
+    z-index: var(--z-index-s);
+  }
+
   @mixin min-tablet {
     border-radius: var(--border-radius-control);
     max-width: 485px;
     min-height: unset;
   }
+}
+
+.modal_fetching {
+  &::before {
+    opacity: .8;
+    visibility: visible;
+  }
+}
+
+.modal__spin {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-index-m);
 }
 
 .modal__header {

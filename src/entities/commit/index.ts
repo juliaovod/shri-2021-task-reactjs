@@ -1,4 +1,4 @@
-import { not } from 'ramda';
+import { isEmpty, not } from 'ramda';
 
 // eslint-disable-next-line camelcase
 import _commits_mockup from '../../../_commits_mockup.json';
@@ -14,7 +14,7 @@ export const getCommits = (): Promise<Commit[]> => {
 };
 
 export const isInvalidCommitHash = (value: string, commits: Commit[]): boolean =>
-  not(commits.some((commit) => value === commit.id || value === commit.shortId));
+  isEmpty(value) || not(commits.some((commit) => value === commit.id || value === commit.shortId));
 
 export const humanizeCommit = (commit: Commit): string =>
   [

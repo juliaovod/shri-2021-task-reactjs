@@ -47,6 +47,10 @@
   margin-bottom: 12px;
 }
 
+.modal__description {
+  margin-top: 12px;
+}
+
 .modal__footer {
   display: flex;
   margin-top: 12px;

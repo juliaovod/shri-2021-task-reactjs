@@ -7,15 +7,17 @@ import Button from 'UiKit/components/Button';
 import Icon from 'UiKit/components/Icon';
 import IconButton from 'UiKit/components/IconButton';
 import Typography from 'UiKit/components/Typography';
+import Modal from 'UiKit/components/Modal';
 
 import BuildCard from '@/components/BuildCard';
-import BuildModal from '@/components/BuildModal';
+import CommitSuggest from '@/components/CommitSuggest';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
 import { buildsSelector } from '@/selectors/builds';
 import { connectSettingsSelector } from '@/selectors/connect-settings';
 import { fetchBuilds } from '@/store/modules/builds';
+import { getCommits, isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './History.module.css';
 
@@ -25,14 +27,24 @@ const History: React.FC = () => {
   const builds = useSelector(buildsSelector);
   const connectSettings = useSelector(connectSettingsSelector);
 
+  const [commits, setCommits] = React.useState<Commit[]>([]);
+  const [commitHash, setCommitHash] = React.useState('');
   const [isBuildModalOpen, setBuildModalOpen] = React.useState(false);
+
+  const isInvalidCommit = isInvalidCommitHash(commitHash, commits);
 
   const toggleBuildModal = (): void => {
     setBuildModalOpen((prevIsOpen) => !prevIsOpen);
   };
 
+  const handleClose = (): void => {
+    setCommitHash('');
+    toggleBuildModal();
+  };
+
   React.useEffect(() => {
     dispatch(fetchBuilds());
+    getCommits().then(setCommits);
   }, []);
 
   return (
@@ -63,10 +75,20 @@ const History: React.FC = () => {
 
       <Button size="s">Show more</Button>
 
-      <BuildModal
+      <Modal
+        cancelButton={<Button onClick={handleClose}>Cancel</Button>}
+        description="Enter the commit hash which you want to build."
         isOpen={isBuildModalOpen}
+        okButton={
+          <Button isDisabled={isInvalidCommit} view="action">
+            Run build
+          </Button>
+        }
         onClose={toggleBuildModal}
-      />
+        title="New build"
+      >
+        <CommitSuggest commits={commits} onChange={setCommitHash} value={commitHash} />
+      </Modal>
     </Layout>
   );
 };

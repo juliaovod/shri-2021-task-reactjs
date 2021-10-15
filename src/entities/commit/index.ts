@@ -17,14 +17,14 @@ export const isInvalidCommitHash = (value: string, commits: Commit[]): boolean =
   not(commits.some((commit) => value === commit.id || value === commit.shortId));
 
 export const humanizeCommit = (commit: Commit): string =>
-  [commit.authorName, commit.message, commit.shortId].join(', ');
+  [
+    commit.authorName,
+    commit.message,
+    commit.shortId,
+  ].join(', ');
 
-export const buildCommitsMap = (
-  commits: Commit[],
-  getKey: (commit: Commit) => string = (commit) => commit.shortId,
-  getValue: (commit: Commit) => Commit = (commit) => commit,
-) =>
+export const buildCommitsMap = (commits: Commit[]) =>
   commits.reduce<{ [key: string]: Commit }>((accum, commit) => {
-    accum[getKey(commit)] = getValue(commit);
+    accum[commit.shortId] = commit;
     return accum;
   }, {});

@@ -7,7 +7,7 @@ import Button from 'UiKit/components/Button';
 import Modal, { ModalProps } from 'UiKit/components/Modal';
 import Typography from 'UiKit/components/Typography';
 
-import CommitSuggestion from '@/components/CommitSuggestion';
+import CommitSuggest from '@/components/CommitSuggest';
 import { getCommits, isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './BuildModal.module.css';
@@ -40,7 +40,7 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
   return (
     <Modal
       {...otherProps}
-      cancelButton={<Button onClick={onClose}>Cancel</Button>}
+      cancelButton={<Button onClick={handleClose}>Cancel</Button>}
       okButton={
         <Button isDisabled={isInvalid} onClick={handleAdd} view="action">
           Run build
@@ -53,7 +53,7 @@ const BuildModal: React.FC<BuildModalProps> = (props) => {
         Enter the commit hash which you want to build.
       </Typography>
 
-      <CommitSuggestion commits={commits} onChange={setCommitHash} value={commitHash} />
+      <CommitSuggest commits={commits} onChange={setCommitHash} value={commitHash} />
     </Modal>
   );
 };

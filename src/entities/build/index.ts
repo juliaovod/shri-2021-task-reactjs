@@ -7,7 +7,7 @@ import builds from '../../../_builds_mockup.json';
 const nanoid = customAlphabet('123456789', 5);
 
 export const createBuild = (commit: Commit): Build => ({
-  createdAt: '',
+  createdAt: new Date().toString(),
   deployable: {
     commit: commit,
     ref: 'master',
@@ -24,6 +24,18 @@ export const getBuilds = (): Promise<Build[]> => {
     setTimeout(() => {
       // @ts-ignore
       resolve(builds);
+    }, TIMEOUT);
+  });
+};
+
+export const addBuild = (commit: Commit): Promise<Build> => {
+  const TIMEOUT = 1000;
+
+  const build = createBuild(commit);
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(build);
     }, TIMEOUT);
   });
 };

@@ -13,8 +13,8 @@ import CommitSuggest from '@/components/CommitSuggest';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
-import { getBuilds } from '@/entities/build';
-import { getCommits, isInvalidCommitHash } from '@/entities/commit';
+import { getBuilds, addBuild } from '@/entities/build';
+import { buildCommitsMap, getCommits, isInvalidCommitHash } from '@/entities/commit';
 
 import styles from './History.module.css';
 
@@ -29,8 +29,11 @@ const History: React.FC<HistoryProps> = (props) => {
   const [commits, setCommits] = React.useState<Commit[]>([]);
   const [commitHash, setCommitHash] = React.useState('');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState(false);
 
   const isInvalidCommit = isInvalidCommitHash(commitHash, commits);
+
+  const commitsMap = buildCommitsMap(commits);
 
   const toggleModal = (): void => {
     setIsModalOpen((prevIsOpen) => !prevIsOpen);
@@ -39,6 +42,23 @@ const History: React.FC<HistoryProps> = (props) => {
   const handleClose = (): void => {
     setCommitHash('');
     toggleModal();
+  };
+
+  const handleAdd = async (): Promise<void> => {
+    if (isInvalidCommit) {
+      return;
+    }
+
+    setIsFetching(true);
+
+    const build = await addBuild(commitsMap[commitHash]);
+    setBuilds((prevBuilds) => [build, ...prevBuilds]);
+
+    const TIMEOUT = 1000;
+    setTimeout(() => {
+      setIsFetching(false);
+      handleClose();
+    }, TIMEOUT);
   };
 
   React.useEffect(() => {
@@ -77,9 +97,10 @@ const History: React.FC<HistoryProps> = (props) => {
       <Modal
         cancelButton={<Button onClick={handleClose}>Cancel</Button>}
         description="Enter the commit hash which you want to build."
+        isFetching={isFetching}
         isOpen={isModalOpen}
         okButton={
-          <Button isDisabled={isInvalidCommit} view="action">
+          <Button isDisabled={isInvalidCommit} onClick={handleAdd} view="action">
             Run build
           </Button>
         }

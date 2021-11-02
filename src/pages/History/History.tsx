@@ -13,9 +13,8 @@ import CommitSuggest from '@/components/CommitSuggest';
 import Header from '@/components/Header';
 import Layout from '@/components/Layout';
 import RoutePaths from '@/router/paths';
+import { getBuilds } from '@/entities/build';
 import { getCommits, isInvalidCommitHash } from '@/entities/commit';
-
-import builds from '../../../_builds_mockup.json';
 
 import styles from './History.module.css';
 
@@ -26,6 +25,7 @@ type HistoryProps = {
 const History: React.FC<HistoryProps> = (props) => {
   const { connectSettings } = props;
 
+  const [builds, setBuilds] = React.useState<Build[]>([]);
   const [commits, setCommits] = React.useState<Commit[]>([]);
   const [commitHash, setCommitHash] = React.useState('');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
@@ -42,6 +42,7 @@ const History: React.FC<HistoryProps> = (props) => {
   };
 
   React.useEffect(() => {
+    getBuilds().then(setBuilds);
     getCommits().then(setCommits);
   }, []);
 
@@ -68,7 +69,6 @@ const History: React.FC<HistoryProps> = (props) => {
     )}
     >
       {builds.map((build) => (
-        // @ts-ignore
         <BuildCard className={classNames(styles.historyCard)} build={build} key={build.id} />
       ))}
 

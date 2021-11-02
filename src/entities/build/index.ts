@@ -2,6 +2,8 @@ import { customAlphabet } from 'nanoid';
 
 import { BuildStatus } from '@/enums/build';
 
+import builds from '../../../_builds_mockup.json';
+
 const nanoid = customAlphabet('123456789', 5);
 
 export const createBuild = (commit: Commit): Build => ({
@@ -14,3 +16,14 @@ export const createBuild = (commit: Commit): Build => ({
   id: Number(nanoid()),
   status: BuildStatus.Running,
 });
+
+export const getBuilds = (): Promise<Build[]> => {
+  const TIMEOUT = 2000;
+
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      // @ts-ignore
+      resolve(builds);
+    }, TIMEOUT);
+  });
+};

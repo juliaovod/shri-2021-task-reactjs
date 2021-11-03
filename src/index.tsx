@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { initProjectTheme } from 'UiKit/utils/theme';
 
@@ -14,9 +14,9 @@ initProjectTheme();
 
 const createApp = (): void => {
   ReactDOM.render(
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <App />
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById(config.APP_ROOT_ID),
   );
 };

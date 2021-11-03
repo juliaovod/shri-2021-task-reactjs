@@ -18,10 +18,19 @@ export const getConnectSettings = (): ConnectSettings => {
 
 export const saveConnectSettings = (settings: ConnectSettings): Promise<void> => {
   const TIMEOUT = getRandomArbitrary(1000, 6000);
+
+  const requestStart = Date.now();
+
   return new Promise((resolve) => {
     setTimeout(() => {
       Cookies.set(cookieName, JSON.stringify(settings));
       resolve();
+
+      const requestEnd = Date.now();
+
+      if (window.counter) {
+        window.counter.send('connectSettingsSave', requestEnd - requestStart);
+      }
     }, TIMEOUT);
   });
 };

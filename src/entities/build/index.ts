@@ -22,10 +22,18 @@ export const createBuild = (commit: Commit): Build => ({
 export const getBuilds = (): Promise<Build[]> => {
   const TIMEOUT = getRandomArbitrary(1000, 8000);
 
+  const requestStart = Date.now();
+
   return new Promise((resolve) => {
     setTimeout(() => {
       // @ts-ignore
       resolve(builds);
+
+      const requestEnd = Date.now();
+
+      if (window.counter) {
+        window.counter.send('buildsLoad', requestEnd - requestStart);
+      }
     }, TIMEOUT);
   });
 };
@@ -35,9 +43,17 @@ export const addBuild = (commit: Commit): Promise<Build> => {
 
   const build = createBuild(commit);
 
+  const requestStart = Date.now();
+
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(build);
+
+      const requestEnd = Date.now();
+
+      if (window.counter) {
+        window.counter.send('buildAdd', requestEnd - requestStart);
+      }
     }, TIMEOUT);
   });
 };

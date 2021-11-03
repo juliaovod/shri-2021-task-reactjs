@@ -20,7 +20,7 @@ export const createBuild = (commit: Commit): Build => ({
 });
 
 export const getBuilds = (): Promise<Build[]> => {
-  const TIMEOUT = getRandomArbitrary(1000, 5000);
+  const TIMEOUT = getRandomArbitrary(1000, 8000);
 
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -31,7 +31,7 @@ export const getBuilds = (): Promise<Build[]> => {
 };
 
 export const addBuild = (commit: Commit): Promise<Build> => {
-  const TIMEOUT = getRandomArbitrary(1000, 3000);
+  const TIMEOUT = getRandomArbitrary(1000, 5000);
 
   const build = createBuild(commit);
 

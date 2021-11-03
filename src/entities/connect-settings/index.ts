@@ -17,7 +17,7 @@ export const getConnectSettings = (): ConnectSettings => {
 };
 
 export const saveConnectSettings = (settings: ConnectSettings): Promise<void> => {
-  const TIMEOUT = getRandomArbitrary(1000, 5000);
+  const TIMEOUT = getRandomArbitrary(1000, 6000);
   return new Promise((resolve) => {
     setTimeout(() => {
       Cookies.set(cookieName, JSON.stringify(settings));

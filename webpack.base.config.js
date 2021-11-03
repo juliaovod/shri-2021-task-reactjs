@@ -1,6 +1,8 @@
 const path = require('path');
 
 const CopyPlugin = require('copy-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -58,6 +60,14 @@ module.exports = {
     ],
   },
   plugins: [
+    new FriendlyErrorsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'app.css',
+      linkType: 'text/css',
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
     new CopyPlugin({
       patterns: [
         {

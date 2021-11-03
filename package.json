@@ -6,7 +6,7 @@
   "main": "src/index.tsx",
   "homepage": "https://juliaovod.github.io/shri-2021-task-reactjs",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
     "deploy": "gh-pages -d build",
     "lint:js": "eslint ./src --ext .ts,.tsx",
     "lint:scss": "stylelint ./src/**/*.css",

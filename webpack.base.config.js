@@ -1,9 +1,26 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
+
+function getEnvironmentVariables() {
+  if (process.env.NODE_ENV === 'development') {
+    return {
+      NODE_ENV: '"development"',
+      PUBLIC_URL: '"/"',
+    };
+  }
+
+  return {
+    NODE_ENV: '"production"',
+    PUBLIC_URL: '"/shri-2021-task-reactjs"',
+  };
+}
 
 module.exports = {
   entry: ['./src/index.tsx'],
@@ -58,6 +75,17 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': getEnvironmentVariables(),
+    }),
+    new FriendlyErrorsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'app.css',
+      linkType: 'text/css',
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
     new CopyPlugin({
       patterns: [
         {

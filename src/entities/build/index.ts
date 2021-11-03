@@ -1,5 +1,7 @@
 import { customAlphabet } from 'nanoid';
 
+import { getRandomArbitrary } from 'UiKit/utils/random';
+
 import { BuildStatus } from '@/enums/build';
 
 import builds from '../../../_builds_mockup.json';
@@ -18,7 +20,7 @@ export const createBuild = (commit: Commit): Build => ({
 });
 
 export const getBuilds = (): Promise<Build[]> => {
-  const TIMEOUT = 2000;
+  const TIMEOUT = getRandomArbitrary(1000, 5000);
 
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -29,7 +31,7 @@ export const getBuilds = (): Promise<Build[]> => {
 };
 
 export const addBuild = (commit: Commit): Promise<Build> => {
-  const TIMEOUT = 1000;
+  const TIMEOUT = getRandomArbitrary(1000, 3000);
 
   const build = createBuild(commit);
 

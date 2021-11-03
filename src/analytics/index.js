@@ -11,6 +11,7 @@ const {
 } = window;
 
 const counter = new Counter();
+window.counter = counter;
 
 counter.init(APP_GUID, nanoid(), pathname);
 counter.setAdditionalParams({

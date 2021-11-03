@@ -1,5 +1,7 @@
 import Cookies from 'js-cookie';
 
+import { getRandomArbitrary } from 'UiKit/utils/random';
+
 const defaultConnectSettings: ConnectSettings = {
   branch: '',
   command: '',
@@ -15,7 +17,7 @@ export const getConnectSettings = (): ConnectSettings => {
 };
 
 export const saveConnectSettings = (settings: ConnectSettings): Promise<void> => {
-  const TIMEOUT = 2000;
+  const TIMEOUT = getRandomArbitrary(1000, 5000);
   return new Promise((resolve) => {
     setTimeout(() => {
       Cookies.set(cookieName, JSON.stringify(settings));

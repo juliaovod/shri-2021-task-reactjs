@@ -9,6 +9,8 @@ import { initProjectTheme } from 'UiKit/utils/theme';
 import App from '@/App';
 import config from '@/config.json';
 
+import '@/analytics';
+
 import 'UiKit/theme/index.css';
 
 const browserHistory = createBrowserHistory();

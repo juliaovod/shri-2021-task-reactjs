@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: ['./src/index.tsx'],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),

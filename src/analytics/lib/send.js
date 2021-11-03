@@ -12,7 +12,7 @@ var MAX_BATCH_COUNTERS = 42;
  */
 var COUNTERS_BATCH_TIMEOUT = 15;
 
-function Counter() {
+export default function Counter() {
   this.guid = '';
   this.reqid = '';
   this.page = '';

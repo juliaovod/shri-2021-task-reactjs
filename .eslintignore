@@ -1,6 +1,7 @@
 build/
 node_modules/
-vendors/
+
+src/analytics/lib
 
 .eslintrc.js
 .huskryrc.js

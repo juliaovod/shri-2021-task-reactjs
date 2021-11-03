@@ -18,7 +18,7 @@ function getEnvironmentVariables() {
 
   return {
     NODE_ENV: '"production"',
-    PUBLIC_URL: '"https://juliaovod.github.io/shri-2021-task-reactjs"',
+    PUBLIC_URL: '"/shri-2021-task-reactjs"',
   };
 }
 

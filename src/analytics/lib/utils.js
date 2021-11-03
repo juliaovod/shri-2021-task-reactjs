@@ -18,19 +18,3 @@ export function prepareData(result) {
     return item;
   });
 }
-
-export function addMetricByDate(data, page, name, date) {
-  let sampleData = data
-    .filter(item => item.page == page && item.name == name && item.date == date)
-    .map(item => item.value);
-
-  let result = {};
-
-  result.hits = sampleData.length;
-  result.p25 = quantile(sampleData, 0.25);
-  result.p50 = quantile(sampleData, 0.5);
-  result.p75 = quantile(sampleData, 0.75);
-  result.p95 = quantile(sampleData, 0.95);
-
-  return result;
-}

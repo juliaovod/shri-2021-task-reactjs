@@ -1,8 +1,12 @@
-import { nanoid } from 'nanoid';
+import format from 'date-fns/format';
 import { getFCP, getLCP, getFID, getCLS } from 'web-vitals';
+import { nanoid } from 'nanoid';
+
+import stdout from 'UiKit/utils/stdout';
 
 import Counter from './lib/send';
-import { APP_GUID } from './utils';
+import { APP_GUID, calcMetrics, displayTable, compareMetricsByVendor } from './utils';
+import { prepareData } from './lib/utils';
 
 const {
   location: { pathname },
@@ -41,5 +45,14 @@ getFID((metric) => {
 fetch(`https://shri.yandex/hw/stat/data?counterId=${APP_GUID}`)
   .then((res) => res.json())
   .then((res) => {
-    window.console.log(res);
+    const date = format(new Date(), 'yyyy-MM-dd');
+    const data = prepareData(res).filter((item) => item.date === date);
+
+    stdout('Metrics by date — ', date);
+
+    stdout('All metrics');
+    displayTable(calcMetrics(data));
+
+    stdout('All metrics by vendor');
+    compareMetricsByVendor(data);
   });

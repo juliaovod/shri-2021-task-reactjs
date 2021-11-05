@@ -70,6 +70,7 @@ export const showMetricByLayer = (data, date, name, layer) => {
   }
 
   window.console.table(table);
+  return table;
 };
 
 export const calcMetrics = (data, date) => {

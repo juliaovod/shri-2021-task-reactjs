@@ -86,7 +86,7 @@ export const calcMetrics = (data, date) => {
   table.fid = addMetricsByDate(data, date, 'fid');
 
   table[CustomMetrics.request.BUILD_LIST] = addMetricsByDate(
-    data, date, CustomMetrics.request.BUILD_ADD,
+    data, date, CustomMetrics.request.BUILD_LIST,
   );
 
   table[CustomMetrics.request.BUILD_ADD] = addMetricsByDate(

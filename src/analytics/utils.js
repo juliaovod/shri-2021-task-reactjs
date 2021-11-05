@@ -43,7 +43,7 @@ export const addMetricsByDate = (data, date, name) => {
   return getMetrics(sampleData);
 };
 
-export const showMetricByLayer = (data, date, name, layer) => {
+export const showMetricsByLayer = (data, date, name, layer) => {
   window.console.log('Metrics of', name, 'by layer', layer.toUpperCase());
 
   const table = {};
@@ -102,13 +102,13 @@ export const calcMetrics = (data, date) => {
 };
 
 export const compareMetrics = (data, date) => {
-  showMetricByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'browser');
-  showMetricByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'os');
-  showMetricByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'platform');
+  showMetricsByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'browser');
+  showMetricsByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'os');
+  showMetricsByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'platform');
 
-  showMetricByLayer(data, date, 'fcp', 'browser');
-  showMetricByLayer(data, date, 'fcp', 'os');
-  showMetricByLayer(data, date, 'fcp', 'platform');
+  showMetricsByLayer(data, date, 'fcp', 'browser');
+  showMetricsByLayer(data, date, 'fcp', 'os');
+  showMetricsByLayer(data, date, 'fcp', 'platform');
 };
 
 export const printMetrics = (date) => {

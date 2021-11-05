@@ -2,6 +2,8 @@ import Cookies from 'js-cookie';
 
 import { getRandomArbitrary } from 'UiKit/utils/random';
 
+import { CustomMetrics } from '@/analytics/utils';
+
 const defaultConnectSettings: ConnectSettings = {
   branch: '',
   command: '',
@@ -29,7 +31,7 @@ export const saveConnectSettings = (settings: ConnectSettings): Promise<void> =>
       const requestEnd = Date.now();
 
       if (window.counter) {
-        window.counter.send('connectSettingsSave', requestEnd - requestStart);
+        window.counter.send(CustomMetrics.request.CONNECT_SETTINGS, requestEnd - requestStart);
       }
     }, TIMEOUT);
   });

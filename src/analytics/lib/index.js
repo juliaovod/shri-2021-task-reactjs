@@ -1,3 +1,5 @@
+export { default as Counter } from '@/analytics/lib/send';
+
 export function quantile(arr, q) {
   const sorted = arr.sort((a, b) => a - b);
   const pos = (sorted.length - 1) * q;

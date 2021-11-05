@@ -3,6 +3,7 @@ import { customAlphabet } from 'nanoid';
 import { getRandomArbitrary } from 'UiKit/utils/random';
 
 import { BuildStatus } from '@/enums/build';
+import { CustomMetrics } from '@/analytics/utils';
 
 import builds from '../../../_builds_mockup.json';
 
@@ -32,7 +33,7 @@ export const getBuilds = (): Promise<Build[]> => {
       const requestEnd = Date.now();
 
       if (window.counter) {
-        window.counter.send('buildsLoad', requestEnd - requestStart);
+        window.counter.send(CustomMetrics.request.BUILD_LIST, requestEnd - requestStart);
       }
     }, TIMEOUT);
   });
@@ -52,7 +53,7 @@ export const addBuild = (commit: Commit): Promise<Build> => {
       const requestEnd = Date.now();
 
       if (window.counter) {
-        window.counter.send('buildAdd', requestEnd - requestStart);
+        window.counter.send(CustomMetrics.request.BUILD_ADD, requestEnd - requestStart);
       }
     }, TIMEOUT);
   });

@@ -1,20 +1,37 @@
-import stdout from 'UiKit/utils/stdout';
+import Bowser from 'bowser';
 
-import { quantile } from './lib/utils';
+import { prepareData, quantile } from '@/analytics/lib';
 
-export const APP_GUID = '92848993-B209-4A79-AE00-24D22456FFFC';
-export const Vendors = {
-  Chrome: 'Google Inc.',
-  Gecko: '',
-  WebKit: 'Apple Computer, Inc.',
+export const APP_GUID = '57F8966B-ABA2-4ABB-99A3-757C2537064C';
+export const Browsers = {
+  Chrome: 'Chrome',
+  Firefox: 'Firefox',
+  InternetExplorer: 'Internet Explorer',
+  Safari: 'Safari',
+};
+export const Platforms = { Desktop: 'desktop', Touch: 'touch' };
+export const CustomMetrics = {
+  request: {
+    BUILD_ADD: 'request/BUILD_ADD',
+    BUILD_LIST: 'request/BUILD_LIST',
+    CONNECT_SETTINGS: 'request/CONNECT_SETTINGS',
+  },
 };
 
-export const displayTable = (...args) => {
-  window.console.table(...args);
+export const getBrowser = () => {
+  const { browser, os, platform, engine } = Bowser.parse(window.navigator.userAgent);
+  return {
+    browser: browser.name,
+    engine: engine.name,
+    os: os.name,
+    platform: platform.type,
+  };
 };
 
-export const metricsInQuantile = (data, filter = () => true) => {
-  const sampleData = data.filter(filter).map((item) => item.value);
+export const calcQuantile = (data, name) => {
+  const sampleData = data
+    .filter((curr) => curr.name === name)
+    .map((curr) => curr.value);
 
   const result = {};
 
@@ -28,35 +45,37 @@ export const metricsInQuantile = (data, filter = () => true) => {
 };
 
 export const calcMetrics = (data) => {
+  window.console.log('All metrics');
+
   const table = {};
 
-  // NOTE: Render metrics
-  table.connect = metricsInQuantile(data, (item) => item.name === 'connect');
-  table.ttfb = metricsInQuantile(data, (item) => item.name === 'ttfb');
-  table.fcp = metricsInQuantile(data, (item) => item.name === 'fcp');
-  table.lcp = metricsInQuantile(data, (item) => item.name === 'lcp');
-  table.cls = metricsInQuantile(data, (item) => item.name === 'cls');
-  table.fid = metricsInQuantile(data, (item) => item.name === 'fid');
+  table.connect = calcQuantile(data, 'connect');
+  table.ttfb = calcQuantile(data, 'ttfb');
+  table.fcp = calcQuantile(data, 'fcp');
+  table.lcp = calcQuantile(data, 'lcp');
+  table.cls = calcQuantile(data, 'cls');
+  table.fid = calcQuantile(data, 'fid');
 
-  // NOTE: Request metrics
-  table.buildsLoad = metricsInQuantile(data, (item) => item.name === 'buildsLoad');
-  table.buildAdd = metricsInQuantile(data, (item) => item.name === 'buildAdd');
-  table.connectSettingsSave = metricsInQuantile(data, (item) => item.name === 'connectSettingsSave');
+  table[CustomMetrics.request.BUILD_LIST] = calcQuantile(data, CustomMetrics.request.BUILD_ADD);
+  table[CustomMetrics.request.BUILD_ADD] = calcQuantile(data, CustomMetrics.request.BUILD_ADD);
+  table[CustomMetrics.request.CONNECT_SETTINGS] = calcQuantile(
+    data,
+    CustomMetrics.request.CONNECT_SETTINGS,
+  );
 
+  window.console.table(table);
   return table;
 };
 
-export const compareMetricsByVendor = (data) => {
-  const dataByChrome = data.filter((item) => item.additional.vendor === Vendors.Chrome);
-  const dataByWebkit = data.filter((item) => item.additional.vendor === Vendors.WebKit);
-  const dataByGecko = data.filter((item) => item.additional.vendor === Vendors.Gecko);
+export const compareMetrics = () => {};
 
-  stdout(Vendors.Chrome);
-  displayTable(calcMetrics(dataByChrome));
+export const printMetrics = (date) => {
+  fetch(`https://shri.yandex/hw/stat/data?counterId=${APP_GUID}`)
+    .then((response) => response.json())
+    .then((response) => {
+      const preparedData = prepareData(response).filter((curr) => curr.date === date);
+      window.console.log(preparedData);
 
-  stdout(Vendors.WebKit);
-  displayTable(calcMetrics(dataByWebkit));
-
-  stdout(Vendors.Gecko);
-  displayTable(calcMetrics(dataByGecko));
+      calcMetrics(preparedData);
+    });
 };

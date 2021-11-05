@@ -2,14 +2,7 @@ import Bowser from 'bowser';
 
 import { prepareData, quantile } from '@/analytics/lib';
 
-export const APP_GUID = '57F8966B-ABA2-4ABB-99A3-757C2537064C';
-export const Browsers = {
-  Chrome: 'Chrome',
-  Firefox: 'Firefox',
-  InternetExplorer: 'Internet Explorer',
-  Safari: 'Safari',
-};
-export const Platforms = { Desktop: 'desktop', Touch: 'touch' };
+export const APP_GUID = 'F53AAF0C-1149-4891-B5CB-C792B9204237';
 export const CustomMetrics = {
   request: {
     BUILD_ADD: 'request/BUILD_ADD',
@@ -28,54 +21,102 @@ export const getBrowser = () => {
   };
 };
 
-export const calcQuantile = (data, name) => {
-  const sampleData = data
-    .filter((curr) => curr.name === name)
-    .map((curr) => curr.value);
-
+export const getMetrics = (data) => {
   const result = {};
 
-  result.hits = sampleData.length;
-  result.p25 = quantile(sampleData, 0.25);
-  result.p50 = quantile(sampleData, 0.5);
-  result.p75 = quantile(sampleData, 0.75);
-  result.p95 = quantile(sampleData, 0.95);
+  result.hits = data.length;
+  result.p25 = quantile(data, 0.25);
+  result.p50 = quantile(data, 0.5);
+  result.p75 = quantile(data, 0.75);
+  result.p95 = quantile(data, 0.95);
 
   return result;
 };
 
-export const calcMetrics = (data) => {
+export const filterDataByDate = (data, date, name) => data
+  .filter((curr) => curr.name === name && curr.date === date);
+
+export const addMetricsByDate = (data, date, name) => {
+  const sampleData = filterDataByDate(data, date, name)
+    .map((curr) => curr.value);
+
+  return getMetrics(sampleData);
+};
+
+export const showMetricByLayer = (data, date, name, layer) => {
+  window.console.log('Metrics of', name, 'by layer', layer.toUpperCase());
+
+  const table = {};
+
+  const sampleData = filterDataByDate(data, date, name);
+
+  const layers = sampleData.reduce((accum, curr) => {
+    if (accum.includes(curr.additional[layer])) {
+      return accum;
+    }
+    accum.push(curr.additional[layer]);
+    return accum;
+  }, []);
+
+  for (let i = 0; i < layers.length; i += 1) {
+    table[layers[i]] = getMetrics(
+      sampleData.reduce((accum, curr) => {
+        if (curr.additional[layer] === layers[i]) {
+          accum.push(curr.value);
+        }
+        return accum;
+      }, []),
+    );
+  }
+
+  window.console.table(table);
+};
+
+export const calcMetrics = (data, date) => {
   window.console.log('All metrics');
 
   const table = {};
 
-  table.connect = calcQuantile(data, 'connect');
-  table.ttfb = calcQuantile(data, 'ttfb');
-  table.fcp = calcQuantile(data, 'fcp');
-  table.lcp = calcQuantile(data, 'lcp');
-  table.cls = calcQuantile(data, 'cls');
-  table.fid = calcQuantile(data, 'fid');
+  table.connect = addMetricsByDate(data, date, 'connect');
+  table.ttfb = addMetricsByDate(data, date, 'ttfb');
+  table.fcp = addMetricsByDate(data, date, 'fcp');
+  table.lcp = addMetricsByDate(data, date, 'lcp');
+  table.cls = addMetricsByDate(data, date, 'cls');
+  table.fid = addMetricsByDate(data, date, 'fid');
 
-  table[CustomMetrics.request.BUILD_LIST] = calcQuantile(data, CustomMetrics.request.BUILD_ADD);
-  table[CustomMetrics.request.BUILD_ADD] = calcQuantile(data, CustomMetrics.request.BUILD_ADD);
-  table[CustomMetrics.request.CONNECT_SETTINGS] = calcQuantile(
-    data,
-    CustomMetrics.request.CONNECT_SETTINGS,
+  table[CustomMetrics.request.BUILD_LIST] = addMetricsByDate(
+    data, date, CustomMetrics.request.BUILD_ADD,
+  );
+
+  table[CustomMetrics.request.BUILD_ADD] = addMetricsByDate(
+    data, date, CustomMetrics.request.BUILD_ADD,
+  );
+
+  table[CustomMetrics.request.CONNECT_SETTINGS] = addMetricsByDate(
+    data, date, CustomMetrics.request.CONNECT_SETTINGS,
   );
 
   window.console.table(table);
   return table;
 };
 
-export const compareMetrics = () => {};
+export const compareMetrics = (data, date) => {
+  showMetricByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'browser');
+  showMetricByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'os');
+  showMetricByLayer(data, date, CustomMetrics.request.BUILD_LIST, 'platform');
+
+  showMetricByLayer(data, date, 'fcp', 'browser');
+  showMetricByLayer(data, date, 'fcp', 'os');
+  showMetricByLayer(data, date, 'fcp', 'platform');
+};
 
 export const printMetrics = (date) => {
   fetch(`https://shri.yandex/hw/stat/data?counterId=${APP_GUID}`)
     .then((response) => response.json())
     .then((response) => {
-      const preparedData = prepareData(response).filter((curr) => curr.date === date);
-      window.console.log(preparedData);
+      const preparedData = prepareData(response);
 
-      calcMetrics(preparedData);
+      calcMetrics(preparedData, date);
+      compareMetrics(preparedData, date);
     });
 };

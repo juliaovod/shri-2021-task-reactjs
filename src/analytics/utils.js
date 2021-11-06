@@ -11,7 +11,7 @@ export const CustomMetrics = {
   },
 };
 
-export const getBrowser = () => {
+export const getUserAgent = () => {
   const { browser, os, platform, engine } = Bowser.parse(window.navigator.userAgent);
   return {
     browser: browser.name,

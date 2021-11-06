@@ -3,7 +3,7 @@ import { getFCP, getLCP, getFID, getCLS } from 'web-vitals';
 import { nanoid } from 'nanoid';
 
 import { Counter } from '@/analytics/lib';
-import { APP_GUID, getBrowser, printMetrics } from '@/analytics/utils';
+import { APP_GUID, getUserAgent, printMetrics } from '@/analytics/utils';
 
 const counter = new Counter();
 window.counter = counter;
@@ -11,7 +11,7 @@ window.counter = counter;
 counter.init(APP_GUID, nanoid(), window.location.pathname);
 counter.setAdditionalParams({
   env: process.env.NODE_ENV,
-  ...getBrowser(),
+  ...getUserAgent(),
 });
 
 const [firstEntry] = window.performance.getEntriesByType('navigation');
